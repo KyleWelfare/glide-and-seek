@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg44j8di6n70"]
+
+[ext_resource type="Script" path="res://scenes/managers/level_stopwatch.gd" id="1_67e8y"]
+
+[node name="LevelStopwatch" type="Node2D"]
+script = ExtResource("1_67e8y")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StopwatchLabel" type="Label" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 23.0
+offset_right = 47.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 12
+text = "0.0"

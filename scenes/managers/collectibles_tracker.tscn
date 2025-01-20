@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bntdjh12bk37a"]
+
+[ext_resource type="Script" path="res://scenes/managers/collectibles_tracker.gd" id="1_6xkww"]
+
+[node name="CollectiblesTracker" type="Node2D"]
+script = ExtResource("1_6xkww")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CollectiblesRemainingLabel" type="Label" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 171.0
+offset_bottom = 27.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 12
+text = "Flowers Remaining: 0"
