@@ -1,16 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4eli5hasrbpn"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_ci2tu"]
-[ext_resource type="PackedScene" uid="uid://cjcoad8rdb8o2" path="res://player.tscn" id="1_hi8yq"]
+[ext_resource type="PackedScene" uid="uid://cjcoad8rdb8o2" path="res://scenes/characters/player.tscn" id="1_hi8yq"]
 [ext_resource type="Texture2D" uid="uid://ofdvo3npxxww" path="res://assets/bg_test_treetop.png" id="2_0s4u8"]
-[ext_resource type="PackedScene" uid="uid://b60t4yh6y5qu1" path="res://oob_resetter.tscn" id="4_kg64r"]
-[ext_resource type="PackedScene" uid="uid://ckbub55fbvfib" path="res://collectible.tscn" id="5_vc4yg"]
-[ext_resource type="PackedScene" uid="uid://c0r2cvxk8rcnf" path="res://treetop_tilemap.tscn" id="6_5lw3l"]
-[ext_resource type="PackedScene" uid="uid://bntdjh12bk37a" path="res://collectibles_tracker.tscn" id="7_dfauy"]
-[ext_resource type="PackedScene" uid="uid://dg44j8di6n70" path="res://level_stopwatch.tscn" id="8_ia05e"]
+[ext_resource type="PackedScene" uid="uid://b60t4yh6y5qu1" path="res://scenes/managers/oob_resetter.tscn" id="4_kg64r"]
+[ext_resource type="PackedScene" uid="uid://ckbub55fbvfib" path="res://scenes/objects/collectible.tscn" id="5_vc4yg"]
+[ext_resource type="PackedScene" uid="uid://c0r2cvxk8rcnf" path="res://scenes/tilesets/treetop_tilemap.tscn" id="6_5lw3l"]
+[ext_resource type="PackedScene" uid="uid://bntdjh12bk37a" path="res://scenes/managers/collectibles_tracker.tscn" id="7_dfauy"]
+[ext_resource type="PackedScene" uid="uid://dg44j8di6n70" path="res://scenes/managers/level_stopwatch.tscn" id="8_ia05e"]
+
+[sub_resource type="Resource" id="Resource_7rg7d"]
+metadata/__load_path__ = "res://game.gd"
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_ci2tu")
+script = SubResource("Resource_7rg7d")
 
 [node name="EnvironmentSprite" type="Sprite2D" parent="."]
 position = Vector2(320, 180)

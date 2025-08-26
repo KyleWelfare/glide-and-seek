@@ -102,12 +102,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xtwar"]
 _data = {
-"RESET": SubResource("Animation_43wx8"),
-"player_fall": SubResource("Animation_mklx6"),
-"player_glide": SubResource("Animation_di7xy"),
-"player_idle": SubResource("Animation_3xm5d"),
-"player_jump": SubResource("Animation_ovqws"),
-"player_run": SubResource("Animation_2bujv")
+&"RESET": SubResource("Animation_43wx8"),
+&"player_fall": SubResource("Animation_mklx6"),
+&"player_glide": SubResource("Animation_di7xy"),
+&"player_idle": SubResource("Animation_3xm5d"),
+&"player_jump": SubResource("Animation_ovqws"),
+&"player_run": SubResource("Animation_2bujv")
 }
 
 [node name="PlayerAnim" type="AnimationPlayer"]

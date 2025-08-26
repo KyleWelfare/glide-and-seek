@@ -6,43 +6,42 @@ extends State
 @export var fall_state: State
 @export var wall_idle_state: State
 
-@export var glide_gravity: float = 100
+@export var glide_gravity: float = 100.0
 
 func enter() -> void:
 	super()
-	parent.velocity.y = 0
-	
-	#parent.vertical_collision.disabled = true
-	#parent.horizontal_collision.disabled = false
+	parent.velocity.y = 0.0
 
 func process_physics(delta: float) -> State:
 	parent.velocity.y = glide_gravity
 
-	var movement = Input.get_axis('move_left', 'move_right') * move_speed
-	if movement != 0:
-		parent.player_sprite.flip_h = movement < 0
-	parent.velocity.x = movement
+	var axis: float = Input.get_axis('move_left', 'move_right')
+	var movement: float = axis * move_speed
+
+	if parent.dash_carry_active:
+		parent.velocity.x = parent.apply_air_carry(delta, axis, move_speed)
+	else:
+		parent.velocity.x = movement
+		if axis != 0.0:
+			parent.player_sprite.flip_h = axis < 0.0
+			parent.last_horizontal_dir = -1 if axis < 0.0 else 1
+
 	parent.move_and_slide()
-	
+
 	if parent.is_on_floor():
-		if movement != 0:
+		if axis != 0.0:
 			return run_state
 		return idle_state
-	
+
 	if Input.is_action_just_pressed('jump'):
-		if parent.can_double_jump == true:
+		if parent.can_double_jump:
 			parent.can_double_jump = false
 			return jump_state
-	
-	if Input.is_action_just_released("glide_cling_dash"):
-		return fall_state
-		
-	if parent.is_on_wall():
-		return wall_idle_state
-		
-	return null
 
-func exit() -> void:
-	#parent.vertical_collision.disabled = false
-	#parent.horizontal_collision.disabled = true
-	pass
+	if Input.is_action_just_released("glide"):
+		return fall_state
+
+	if parent.is_on_wall() and Input.is_action_pressed("cling_dash"):
+		return wall_idle_state
+
+	return null

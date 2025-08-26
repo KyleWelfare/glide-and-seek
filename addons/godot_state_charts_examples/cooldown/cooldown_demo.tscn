@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://bphe0g2d306fe" path="res://addons/godot_state_charts_examples/cooldown/icons/enchant-red-3.png" id="3_a8h0q"]
 [ext_resource type="Texture2D" uid="uid://bjmc4abduaxww" path="res://addons/godot_state_charts_examples/cooldown/icons/fireball-eerie-2.png" id="4_jhd8u"]
 [ext_resource type="Texture2D" uid="uid://b87nmomi1l48x" path="res://addons/godot_state_charts_examples/cooldown/icons/heal-jade-2.png" id="5_xxunm"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="6_d3pqh"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="7_l6ahs"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="8_pvst5"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="9_h41ei"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="10_5fig4"]
+[ext_resource type="Script" uid="uid://dfecgpab4h7oa" path="res://addons/godot_state_charts/state_chart.gd" id="6_d3pqh"]
+[ext_resource type="Script" uid="uid://drtsx0p08rx7l" path="res://addons/godot_state_charts/parallel_state.gd" id="7_l6ahs"]
+[ext_resource type="Script" uid="uid://csd0xo2pqcpy8" path="res://addons/godot_state_charts/compound_state.gd" id="8_pvst5"]
+[ext_resource type="Script" uid="uid://csgt5dnuxl88c" path="res://addons/godot_state_charts/atomic_state.gd" id="9_h41ei"]
+[ext_resource type="Script" uid="uid://ce5mnkf1csl5e" path="res://addons/godot_state_charts/transition.gd" id="10_5fig4"]
 
 [node name="Cooldown Example" type="Node2D"]
 

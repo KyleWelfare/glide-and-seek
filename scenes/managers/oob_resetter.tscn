@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b60t4yh6y5qu1"]
 
-[ext_resource type="Script" path="res://scenes/managers/oob_resetter.gd" id="1_06gtb"]
+[ext_resource type="Script" uid="uid://dkvoam0h103oj" path="res://scenes/managers/oob_resetter.gd" id="1_06gtb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ege5b"]
 size = Vector2(58, 96.5)

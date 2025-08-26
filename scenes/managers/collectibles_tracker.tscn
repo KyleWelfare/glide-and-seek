@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bntdjh12bk37a"]
 
-[ext_resource type="Script" path="res://scenes/managers/collectibles_tracker.gd" id="1_6xkww"]
+[ext_resource type="Script" uid="uid://d1x7nxyss5toh" path="res://scenes/managers/collectibles_tracker.gd" id="1_6xkww"]
 
 [node name="CollectiblesTracker" type="Node2D"]
 script = ExtResource("1_6xkww")

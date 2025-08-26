@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch1pukkyc07qo"]
 
-[ext_resource type="Script" path="res://addons/godot_state_charts_examples/cooldown/skill_button/skill_button.gd" id="1_r0ivs"]
+[ext_resource type="Script" uid="uid://byq08dkkox7hi" path="res://addons/godot_state_charts_examples/cooldown/skill_button/skill_button.gd" id="1_r0ivs"]
 [ext_resource type="Texture2D" uid="uid://tgsnqiq40n41" path="res://addons/godot_state_charts_examples/cooldown/icons/cooldown_overlay.png" id="3_pgrfi"]
 
 [node name="SkillButton" type="MarginContainer"]

@@ -1,20 +1,20 @@
 [gd_scene load_steps=34 format=3 uid="uid://cd8goosvr0g65"]
 
-[ext_resource type="Script" path="res://scenes/characters/player_fsm.gd" id="1_22ohq"]
+[ext_resource type="Script" uid="uid://pflytok351ps" path="res://scenes/characters/player_fsm.gd" id="1_22ohq"]
 [ext_resource type="Texture2D" uid="uid://v1j3ag6pemrp" path="res://assets/player_spritesheet.png" id="2_bo8q2"]
-[ext_resource type="Script" path="res://scenes/state_machine/state_machine.gd" id="3_tmglo"]
-[ext_resource type="Script" path="res://scenes/state_machine/idle.gd" id="5_k4imo"]
-[ext_resource type="Script" path="res://scenes/state_machine/jump.gd" id="5_meydf"]
-[ext_resource type="Script" path="res://scenes/state_machine/run.gd" id="5_ybja3"]
-[ext_resource type="Script" path="res://scenes/state_machine/duck.gd" id="6_348gu"]
-[ext_resource type="Script" path="res://scenes/state_machine/fall.gd" id="7_2nyug"]
-[ext_resource type="Script" path="res://scenes/state_machine/ground_dash.gd" id="8_4wcr0"]
-[ext_resource type="Script" path="res://scenes/state_machine/coyote.gd" id="9_ysamn"]
-[ext_resource type="Script" path="res://scenes/state_machine/glide.gd" id="10_7v8h0"]
-[ext_resource type="Script" path="res://scenes/state_machine/wall_idle.gd" id="11_ybewe"]
-[ext_resource type="Script" path="res://scenes/state_machine/wall_climb.gd" id="12_k0at5"]
-[ext_resource type="Script" path="res://scenes/state_machine/wall_slide.gd" id="13_3sl2v"]
-[ext_resource type="Script" path="res://scenes/state_machine/wall_jump.gd" id="13_dfvpo"]
+[ext_resource type="Script" uid="uid://b03rny6wmdawq" path="res://scenes/state_machine/state_machine.gd" id="3_tmglo"]
+[ext_resource type="Script" uid="uid://dis6epsxjduth" path="res://scenes/state_machine/idle.gd" id="5_k4imo"]
+[ext_resource type="Script" uid="uid://v3i3owl0wo3b" path="res://scenes/state_machine/jump.gd" id="5_meydf"]
+[ext_resource type="Script" uid="uid://dr3oobs1vi74h" path="res://scenes/state_machine/run.gd" id="5_ybja3"]
+[ext_resource type="Script" uid="uid://dwramhsd22xgd" path="res://scenes/state_machine/duck.gd" id="6_348gu"]
+[ext_resource type="Script" uid="uid://c4q601r0jqrf3" path="res://scenes/state_machine/fall.gd" id="7_2nyug"]
+[ext_resource type="Script" uid="uid://tdvwmq56ynb5" path="res://scenes/state_machine/ground_dash.gd" id="8_4wcr0"]
+[ext_resource type="Script" uid="uid://0yalqa5b6wjx" path="res://scenes/state_machine/coyote.gd" id="9_ysamn"]
+[ext_resource type="Script" uid="uid://dmn2unjhrkn6e" path="res://scenes/state_machine/glide.gd" id="10_7v8h0"]
+[ext_resource type="Script" uid="uid://e20wqkpb0s12" path="res://scenes/state_machine/wall_idle.gd" id="11_ybewe"]
+[ext_resource type="Script" uid="uid://b2e6n4ey2wpfj" path="res://scenes/state_machine/wall_climb.gd" id="12_k0at5"]
+[ext_resource type="Script" uid="uid://ct46x3er8vpg1" path="res://scenes/state_machine/wall_slide.gd" id="13_3sl2v"]
+[ext_resource type="Script" uid="uid://bxbp48rb4rctx" path="res://scenes/state_machine/wall_jump.gd" id="13_dfvpo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjkkk"]
 size = Vector2(12, 19)
@@ -241,21 +241,22 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k8m45"]
 _data = {
-"RESET": SubResource("Animation_413s7"),
-"air_transition": SubResource("Animation_yahnf"),
-"duck": SubResource("Animation_6d1c5"),
-"fall": SubResource("Animation_q4ap7"),
-"glide": SubResource("Animation_pln2k"),
-"ground_dash": SubResource("Animation_gwced"),
-"idle": SubResource("Animation_jnirg"),
-"jump": SubResource("Animation_kn01f"),
-"run": SubResource("Animation_shvq4"),
-"wall_climb": SubResource("Animation_j6y6e"),
-"wall_idle": SubResource("Animation_8vu7j"),
-"wall_slide": SubResource("Animation_404os")
+&"RESET": SubResource("Animation_413s7"),
+&"air_transition": SubResource("Animation_yahnf"),
+&"duck": SubResource("Animation_6d1c5"),
+&"fall": SubResource("Animation_q4ap7"),
+&"glide": SubResource("Animation_pln2k"),
+&"ground_dash": SubResource("Animation_gwced"),
+&"idle": SubResource("Animation_jnirg"),
+&"jump": SubResource("Animation_kn01f"),
+&"run": SubResource("Animation_shvq4"),
+&"wall_climb": SubResource("Animation_j6y6e"),
+&"wall_idle": SubResource("Animation_8vu7j"),
+&"wall_slide": SubResource("Animation_404os")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 63
 script = ExtResource("1_22ohq")
 
 [node name="DoubleJumpLabel" type="Label" parent="."]
@@ -324,7 +325,7 @@ show_percentage = false
 
 [node name="PlayerAnims" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_k8m45")
+&"": SubResource("AnimationLibrary_k8m45")
 }
 autoplay = "idle"
 
@@ -395,13 +396,15 @@ glide_state = NodePath("../Glide")
 wall_idle_state = NodePath("../WallIdle")
 animation_name = "fall"
 
-[node name="Coyote" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "fall_state", "glide_state")]
+[node name="Coyote" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "run_state", "duck_state", "jump_state", "glide_state", "wall_idle_state", "fall_state")]
 script = ExtResource("9_ysamn")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
+duck_state = NodePath("../Duck")
 jump_state = NodePath("../Jump")
-fall_state = NodePath("../Fall")
 glide_state = NodePath("../Glide")
+wall_idle_state = NodePath("../WallIdle")
+fall_state = NodePath("../Fall")
 animation_name = "fall"
 
 [node name="Glide" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "fall_state", "wall_idle_state")]
@@ -446,6 +449,20 @@ idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 animation_name = "jump"
+
+[node name="RayCastsContainer" type="Node2D" parent="."]
+
+[node name="CeilingRayCast" type="RayCast2D" parent="RayCastsContainer"]
+position = Vector2(0, -9)
+scale = Vector2(2.56, 1)
+target_position = Vector2(0, -15)
+hit_from_inside = true
+
+[node name="FloorRayCast" type="RayCast2D" parent="RayCastsContainer"]
+position = Vector2(0, -9)
+scale = Vector2(2.56, 1)
+target_position = Vector2(0, 11)
+hit_from_inside = true
 
 [connection signal="timeout" from="SquashTimer" to="." method="_on_squash_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

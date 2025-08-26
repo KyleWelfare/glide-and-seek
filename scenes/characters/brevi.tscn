@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://dqplcr2qw6pkg"]
 
-[ext_resource type="Script" path="res://scenes/characters/brevi.gd" id="1_ck1ir"]
+[ext_resource type="Script" uid="uid://cs46mmlgbg1n8" path="res://scenes/characters/brevi.gd" id="1_ck1ir"]
 [ext_resource type="Texture2D" uid="uid://v1j3ag6pemrp" path="res://assets/player_spritesheet.png" id="2_qpk83"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_vx7m2"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_buy86"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_n51ju"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_ehpj2"]
+[ext_resource type="Script" uid="uid://dfecgpab4h7oa" path="res://addons/godot_state_charts/state_chart.gd" id="3_vx7m2"]
+[ext_resource type="Script" uid="uid://csd0xo2pqcpy8" path="res://addons/godot_state_charts/compound_state.gd" id="4_buy86"]
+[ext_resource type="Script" uid="uid://csgt5dnuxl88c" path="res://addons/godot_state_charts/atomic_state.gd" id="5_n51ju"]
+[ext_resource type="Script" uid="uid://ce5mnkf1csl5e" path="res://addons/godot_state_charts/transition.gd" id="6_ehpj2"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="7_w7wtl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjkkk"]
@@ -112,11 +112,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k8m45"]
 _data = {
-"RESET": SubResource("Animation_413s7"),
-"fall": SubResource("Animation_q4ap7"),
-"idle": SubResource("Animation_jnirg"),
-"jump": SubResource("Animation_kn01f"),
-"run": SubResource("Animation_shvq4")
+&"RESET": SubResource("Animation_413s7"),
+&"fall": SubResource("Animation_q4ap7"),
+&"idle": SubResource("Animation_jnirg"),
+&"jump": SubResource("Animation_kn01f"),
+&"run": SubResource("Animation_shvq4")
 }
 
 [node name="Brevi" type="CharacterBody2D" groups=["player"]]

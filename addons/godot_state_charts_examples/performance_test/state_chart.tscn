@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8rr57grye1kw"]
 
-[ext_resource type="Script" path="res://addons/godot_state_charts_examples/performance_test/state_chart_receiver.gd" id="1_44fbg"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_x4how"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="2_2eb2m"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="3_qtc2o"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="4_ue85n"]
+[ext_resource type="Script" uid="uid://dhbllfb4j6y4r" path="res://addons/godot_state_charts_examples/performance_test/state_chart_receiver.gd" id="1_44fbg"]
+[ext_resource type="Script" uid="uid://dfecgpab4h7oa" path="res://addons/godot_state_charts/state_chart.gd" id="1_x4how"]
+[ext_resource type="Script" uid="uid://csd0xo2pqcpy8" path="res://addons/godot_state_charts/compound_state.gd" id="2_2eb2m"]
+[ext_resource type="Script" uid="uid://csgt5dnuxl88c" path="res://addons/godot_state_charts/atomic_state.gd" id="3_qtc2o"]
+[ext_resource type="Script" uid="uid://ce5mnkf1csl5e" path="res://addons/godot_state_charts/transition.gd" id="4_ue85n"]
 
 [node name="state_chart" type="Node2D"]
 script = ExtResource("1_44fbg")

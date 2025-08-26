@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://btsupkb0c52if"]
+
+[ext_resource type="Script" uid="uid://dc7scxd13p10r" path="res://path_follow_2d.gd" id="1_bssfq"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/objects/hazard_box.tscn" id="2_gwjoa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1jow"]
+size = Vector2(16, 16)
+
+[node name="PatrolFly" type="Path2D"]
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, -4)
+rotation = -1.5708
+script = ExtResource("1_bssfq")
+
+[node name="HazardBox" parent="PathFollow2D" instance=ExtResource("2_gwjoa")]
+position = Vector2(-8, -8)
+
+[node name="CollisionShape2D" parent="PathFollow2D/HazardBox" index="0"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_g1jow")
+
+[node name="ColorRect" type="ColorRect" parent="PathFollow2D"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.630572, 0.00102586, 0.748499, 1)
+
+[editable path="PathFollow2D/HazardBox"]

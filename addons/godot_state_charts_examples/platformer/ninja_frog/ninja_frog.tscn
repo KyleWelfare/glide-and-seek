@@ -1,13 +1,13 @@
 [gd_scene load_steps=29 format=3 uid="uid://v5vg88it87oj"]
 
-[ext_resource type="Script" path="res://addons/godot_state_charts_examples/platformer/ninja_frog/ninja_frog.gd" id="1_xi1lh"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_qw75p"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_g6c55"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="6_vmkuk"]
+[ext_resource type="Script" uid="uid://cdjn1pb7h7y34" path="res://addons/godot_state_charts_examples/platformer/ninja_frog/ninja_frog.gd" id="1_xi1lh"]
+[ext_resource type="Script" uid="uid://dfecgpab4h7oa" path="res://addons/godot_state_charts/state_chart.gd" id="3_qw75p"]
+[ext_resource type="Script" uid="uid://csd0xo2pqcpy8" path="res://addons/godot_state_charts/compound_state.gd" id="4_g6c55"]
+[ext_resource type="Script" uid="uid://csgt5dnuxl88c" path="res://addons/godot_state_charts/atomic_state.gd" id="6_vmkuk"]
 [ext_resource type="Texture2D" uid="uid://bgswg1pgd01d1" path="res://addons/godot_state_charts_examples/platformer/ninja_frog/full.png" id="7_fehuj"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="8_mdf33"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_wswdv"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/animation_tree_state.gd" id="12_8s1ek"]
+[ext_resource type="Script" uid="uid://drtsx0p08rx7l" path="res://addons/godot_state_charts/parallel_state.gd" id="8_mdf33"]
+[ext_resource type="Script" uid="uid://ce5mnkf1csl5e" path="res://addons/godot_state_charts/transition.gd" id="9_wswdv"]
+[ext_resource type="Script" uid="uid://0np4om8ks03n" path="res://addons/godot_state_charts/animation_tree_state.gd" id="12_8s1ek"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ethx"]
 radius = 12.0
@@ -112,12 +112,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_au2ov"]
 _data = {
-"RESET": SubResource("Animation_uq0h4"),
-"double_jump": SubResource("Animation_10ku2"),
-"fall": SubResource("Animation_ibg22"),
-"idle": SubResource("Animation_5rh2e"),
-"jump": SubResource("Animation_jaga7"),
-"walk": SubResource("Animation_6odvc")
+&"RESET": SubResource("Animation_uq0h4"),
+&"double_jump": SubResource("Animation_10ku2"),
+&"fall": SubResource("Animation_ibg22"),
+&"idle": SubResource("Animation_5rh2e"),
+&"jump": SubResource("Animation_jaga7"),
+&"walk": SubResource("Animation_6odvc")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k3ia7"]

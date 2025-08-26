@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy5xrmjffewnk"]
 
 [ext_resource type="Texture2D" uid="uid://b3k7i5rrn5hhl" path="res://addons/godot_state_charts_examples/ant_hill/marker/circle_white.svg" id="1_2vg4s"]
-[ext_resource type="Script" path="res://addons/godot_state_charts_examples/ant_hill/marker/marker.gd" id="2_2b6iy"]
+[ext_resource type="Script" uid="uid://cubvv4t03rhi4" path="res://addons/godot_state_charts_examples/ant_hill/marker/marker.gd" id="2_2b6iy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xsut"]
 

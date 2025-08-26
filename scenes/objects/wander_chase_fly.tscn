@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://3asr0ermchgx"]
+
+[ext_resource type="Script" uid="uid://duv10bpf0ljeu" path="res://scenes/objects/wander_chase_fly.gd" id="1_5dk5g"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/objects/hazard_box.tscn" id="1_bblx6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jw4y"]
+radius = 96.3328
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqcnb"]
+radius = 72.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jg1v8"]
+size = Vector2(16, 16)
+
+[node name="WanderChaseFly" type="Node2D"]
+script = ExtResource("1_5dk5g")
+
+[node name="DeAggroRadius" type="Area2D" parent="."]
+
+[node name="DeAggroRadiusShape" type="CollisionShape2D" parent="DeAggroRadius"]
+shape = SubResource("CircleShape2D_2jw4y")
+debug_color = Color(0.136555, 0.646218, 0, 0.42)
+
+[node name="AggroRadius" type="Area2D" parent="DeAggroRadius"]
+
+[node name="AggroRadiusShape" type="CollisionShape2D" parent="DeAggroRadius/AggroRadius"]
+shape = SubResource("CircleShape2D_vqcnb")
+debug_color = Color(0.886275, 0.168627, 0, 0.670588)
+
+[node name="Fly" type="Node2D" parent="DeAggroRadius"]
+
+[node name="HazardBox" parent="DeAggroRadius/Fly" instance=ExtResource("1_bblx6")]
+
+[node name="CollisionShape2D" parent="DeAggroRadius/Fly/HazardBox" index="0"]
+shape = SubResource("RectangleShape2D_jg1v8")
+debug_color = Color(0, 0, 0, 0.427451)
+
+[node name="ColorRect" type="ColorRect" parent="DeAggroRadius/Fly"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.704216, 0.485472, 3.85046e-07, 1)
+
+[node name="PauseTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="DeAggroRadius/AggroRadius" to="." method="_on_aggro_radius_body_entered"]
+
+[editable path="DeAggroRadius/Fly/HazardBox"]

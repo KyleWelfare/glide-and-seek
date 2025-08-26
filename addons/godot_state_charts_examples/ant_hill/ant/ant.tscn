@@ -1,13 +1,13 @@
 [gd_scene load_steps=75 format=3 uid="uid://dy43c80qlfftx"]
 
-[ext_resource type="Shader" path="res://addons/godot_state_charts_examples/ant_hill/ant/ant.gdshader" id="1_01qat"]
+[ext_resource type="Shader" uid="uid://b87qavm2yhlp" path="res://addons/godot_state_charts_examples/ant_hill/ant/ant.gdshader" id="1_01qat"]
 [ext_resource type="Texture2D" uid="uid://bqgc7cft671q0" path="res://addons/godot_state_charts_examples/ant_hill/ant/walk.png" id="1_7ajse"]
-[ext_resource type="Script" path="res://addons/godot_state_charts_examples/ant_hill/ant/ant.gd" id="1_i761n"]
+[ext_resource type="Script" uid="uid://bielvu81uowwr" path="res://addons/godot_state_charts_examples/ant_hill/ant/ant.gd" id="1_i761n"]
 [ext_resource type="PackedScene" uid="uid://dy5xrmjffewnk" path="res://addons/godot_state_charts_examples/ant_hill/marker/marker.tscn" id="2_lqnr1"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_lard5"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_ejp2e"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_21sgy"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_qj278"]
+[ext_resource type="Script" uid="uid://dfecgpab4h7oa" path="res://addons/godot_state_charts/state_chart.gd" id="3_lard5"]
+[ext_resource type="Script" uid="uid://csd0xo2pqcpy8" path="res://addons/godot_state_charts/compound_state.gd" id="4_ejp2e"]
+[ext_resource type="Script" uid="uid://csgt5dnuxl88c" path="res://addons/godot_state_charts/atomic_state.gd" id="5_21sgy"]
+[ext_resource type="Script" uid="uid://ce5mnkf1csl5e" path="res://addons/godot_state_charts/transition.gd" id="7_qj278"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bjtx1"]
 shader = ExtResource("1_01qat")

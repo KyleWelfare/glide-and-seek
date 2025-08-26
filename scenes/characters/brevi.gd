@@ -109,12 +109,3 @@ func jump(delta: float) -> void:
 		
 func apply_gravity():
 	velocity.y += gravity
-
-
-
-
-
-
-
-
-

@@ -1,17 +1,17 @@
 [gd_scene load_steps=23 format=3 uid="uid://huy14b6x10bh"]
 
 [ext_resource type="Texture2D" uid="uid://bgswg1pgd01d1" path="res://addons/godot_state_charts_examples/platformer/ninja_frog/full.png" id="2_dka03"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_7ryss"]
-[ext_resource type="Script" path="res://addons/godot_state_charts_examples/automatic_transitions/the_frog.gd" id="3_q65wd"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_64ox6"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_ooc8l"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="5_uojl1"]
+[ext_resource type="Script" uid="uid://dfecgpab4h7oa" path="res://addons/godot_state_charts/state_chart.gd" id="3_7ryss"]
+[ext_resource type="Script" uid="uid://4c5uke48dgvb" path="res://addons/godot_state_charts_examples/automatic_transitions/the_frog.gd" id="3_q65wd"]
+[ext_resource type="Script" uid="uid://csd0xo2pqcpy8" path="res://addons/godot_state_charts/compound_state.gd" id="4_64ox6"]
+[ext_resource type="Script" uid="uid://csgt5dnuxl88c" path="res://addons/godot_state_charts/atomic_state.gd" id="5_ooc8l"]
+[ext_resource type="Script" uid="uid://drtsx0p08rx7l" path="res://addons/godot_state_charts/parallel_state.gd" id="5_uojl1"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="6_xggmu"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_v4wmr"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/expression_guard.gd" id="8_r51oc"]
-[ext_resource type="Script" path="res://addons/godot_state_charts_examples/automatic_transitions/stamina_bar.gd" id="9_rtmjc"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/state_is_active_guard.gd" id="10_caxti"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/not_guard.gd" id="11_rfa1s"]
+[ext_resource type="Script" uid="uid://ce5mnkf1csl5e" path="res://addons/godot_state_charts/transition.gd" id="7_v4wmr"]
+[ext_resource type="Script" uid="uid://dvq4i4pp30ji" path="res://addons/godot_state_charts/expression_guard.gd" id="8_r51oc"]
+[ext_resource type="Script" uid="uid://b580lr0cdb15x" path="res://addons/godot_state_charts_examples/automatic_transitions/stamina_bar.gd" id="9_rtmjc"]
+[ext_resource type="Script" uid="uid://grn7mwsg8gu" path="res://addons/godot_state_charts/state_is_active_guard.gd" id="10_caxti"]
+[ext_resource type="Script" uid="uid://dcm6ksti1h38l" path="res://addons/godot_state_charts/not_guard.gd" id="11_rfa1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fogg"]
 size = Vector2(275, 15)
@@ -72,8 +72,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghdrh"]
 _data = {
-"RESET": SubResource("Animation_nb642"),
-"pulsate": SubResource("Animation_wtk5r")
+&"RESET": SubResource("Animation_nb642"),
+&"pulsate": SubResource("Animation_wtk5r")
 }
 
 [node name="Node2D" type="Node2D"]
