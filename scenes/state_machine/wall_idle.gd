@@ -4,10 +4,13 @@ extends State
 @export var wall_slide_state: State
 @export var fall_state: State
 @export var wall_jump_state: State
+@export var wall_coyote_state: State
 
 func enter() -> void:
 	super()
 	parent.velocity = Vector2(0, 0)
+	# Regain mid-air double jump as soon as we are clinging to the wall.
+	parent.can_double_jump = true
 
 func process_input(event: InputEvent) -> State:
 	var climb_direction := Input.get_axis("move_up", "move_down")
@@ -16,12 +19,12 @@ func process_input(event: InputEvent) -> State:
 	elif climb_direction > 0:
 		return wall_slide_state
 
-	if Input.is_action_just_pressed("jump"):
+	if event.is_action_pressed("jump"):
 		return wall_jump_state
 
-	# Releasing RT drops
-	if Input.is_action_just_released("cling_dash"):
-		return fall_state
+	# Releasing cling enters WallCoyote (grace window) instead of immediate fall.
+	if event.is_action_released("cling_dash"):
+		return wall_coyote_state
 
 	return null
 

@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy2v23n5euw35"]
+
+[ext_resource type="Script" uid="uid://bgwkds5bdqeq6" path="res://scenes/ui/timer_hud.gd" id="1_055kb"]
+
+[node name="TimerHUD" type="CanvasLayer"]
+script = ExtResource("1_055kb")
+
+[node name="TimeBox" type="HBoxContainer" parent="."]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 93.0
+offset_bottom = 52.0
+theme_override_constants/separation = 1
+
+[node name="TimeMajorLabel" type="Label" parent="TimeBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "00:00"
+
+[node name="MSBox" type="VBoxContainer" parent="TimeBox"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="TimeMSLabel" type="Label" parent="TimeBox/MSBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = ".000"
+
+[node name="Padding" type="Control" parent="TimeBox/MSBox"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="ReadyLabel" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Ready..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoLabel" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "GO!"
+horizontal_alignment = 1
+vertical_alignment = 1

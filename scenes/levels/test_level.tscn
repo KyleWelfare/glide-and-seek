@@ -1,17 +1,33 @@
-[gd_scene load_steps=17 format=4 uid="uid://2j8drp6h16rh"]
+[gd_scene load_steps=19 format=4 uid="uid://2j8drp6h16rh"]
 
-[ext_resource type="Script" uid="uid://burl0y2cy5y31" path="res://scenes/levels/test_level.gd" id="1_8eewe"]
 [ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="2_8hejo"]
 [ext_resource type="Texture2D" uid="uid://g66crptuidha" path="res://assets/tileset_treetop.png" id="3_f5af4"]
-[ext_resource type="PackedScene" uid="uid://dg44j8di6n70" path="res://scenes/managers/level_stopwatch.tscn" id="3_o4xhp"]
-[ext_resource type="PackedScene" uid="uid://bntdjh12bk37a" path="res://scenes/managers/collectibles_tracker.tscn" id="4_w5ioi"]
 [ext_resource type="PackedScene" uid="uid://ckbub55fbvfib" path="res://scenes/objects/collectible.tscn" id="5_3l41c"]
 [ext_resource type="PackedScene" uid="uid://cqnfwrbx8nmov" path="res://scenes/objects/spikes.tscn" id="7_36c82"]
 [ext_resource type="PackedScene" uid="uid://b15uwd8t0h7l6" path="res://scenes/objects/weevil.tscn" id="8_k2vwn"]
 [ext_resource type="PackedScene" uid="uid://btsupkb0c52if" path="res://scenes/objects/patrol_fly.tscn" id="9_5yq2v"]
 [ext_resource type="PackedScene" uid="uid://3asr0ermchgx" path="res://scenes/objects/wander_chase_fly.tscn" id="10_vxxdj"]
+[ext_resource type="PackedScene" uid="uid://dkmlmv26mfxyi" path="res://scenes/levels/level_hub_test.tscn" id="11_eaa0b"]
 [ext_resource type="PackedScene" uid="uid://cugopqshlv2ua" path="res://scenes/objects/one_way_platform.tscn" id="11_jmx14"]
 [ext_resource type="PackedScene" uid="uid://b4wmjwvtxw458" path="res://scenes/objects/exit_door.tscn" id="12_eaa0b"]
+[ext_resource type="PackedScene" uid="uid://bkasene7ago0o" path="res://scenes/ui/level_end_menu.tscn" id="12_fqldq"]
+[ext_resource type="PackedScene" uid="uid://cy2v23n5euw35" path="res://scenes/ui/timer_hud.tscn" id="13_3ay3b"]
+[ext_resource type="PackedScene" uid="uid://b7r0ehirj8auu" path="res://scenes/managers/level_flow_manager.tscn" id="14_hppjq"]
+
+[sub_resource type="GDScript" id="GDScript_a5rnb"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"restart\"):
+		get_tree().change_scene_to_file(\"res://scenes/levels/test_level.tscn\")
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o13x0"]
 texture = ExtResource("3_f5af4")
@@ -201,7 +217,7 @@ point_count = 3
 size = Vector2(48, 8)
 
 [node name="TestLevel" type="Node2D"]
-script = ExtResource("1_8eewe")
+script = SubResource("GDScript_a5rnb")
 
 [node name="TileMapLayer0" type="TileMapLayer" parent="." groups=["terrain"]]
 use_parent_material = true
@@ -210,88 +226,7 @@ tile_set = SubResource("TileSet_6yvf5")
 
 [node name="Player" parent="." instance=ExtResource("2_8hejo")]
 z_index = 1
-position = Vector2(256, 336)
-
-[node name="LevelStopwatch" parent="." instance=ExtResource("3_o4xhp")]
-
-[node name="CollectiblesTracker" parent="." instance=ExtResource("4_w5ioi")]
-
-[node name="CollectiblesContainer" type="Node2D" parent="."]
-
-[node name="Collectible" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(263, 226)
-
-[node name="Collectible2" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(513, 277)
-
-[node name="Collectible3" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(711, 235)
-
-[node name="Collectible4" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(712, 146)
-
-[node name="Collectible5" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(712, 73)
-
-[node name="Collectible6" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(457, 103)
-
-[node name="Collectible21" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(535, 65)
-
-[node name="Collectible7" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(390, 148)
-
-[node name="Collectible8" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(296, 132)
-
-[node name="Collectible9" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(249, 116)
-
-[node name="Collectible10" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(120, 210)
-
-[node name="Collectible11" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(8, 132)
-
-[node name="Collectible12" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(-20, 242)
-
-[node name="Collectible13" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(458, -63)
-
-[node name="Collectible14" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(377, -64)
-
-[node name="Collectible15" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(256, -45)
-
-[node name="Collectible16" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(153, -13)
-
-[node name="Collectible17" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(79, 8)
-
-[node name="Collectible18" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(-17, 30)
-
-[node name="Collectible19" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(62, 59)
-
-[node name="Collectible20" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(143, 308)
-
-[node name="Collectible22" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(647, 32)
-
-[node name="Collectible23" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(186, 55)
-
-[node name="Collectible24" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(25, 308)
-
-[node name="Collectible25" parent="CollectiblesContainer" instance=ExtResource("5_3l41c")]
-position = Vector2(650, 280)
+position = Vector2(168, 272)
 
 [node name="HazardsContainer" type="Node2D" parent="."]
 
@@ -303,6 +238,13 @@ position = Vector2(480, 304)
 
 [node name="Weevil" parent="." instance=ExtResource("8_k2vwn")]
 position = Vector2(354, 312)
+
+[node name="HazardBox" parent="Weevil" index="4"]
+position = Vector2(-3, 0)
+
+[node name="CollisionShape2D" parent="Weevil/HazardBox" index="0"]
+position = Vector2(3, 0)
+scale = Vector2(1.36001, 1)
 
 [node name="PatrolFly" parent="." instance=ExtResource("9_5yq2v")]
 position = Vector2(448, 276)
@@ -327,7 +269,24 @@ color = Color(0.781955, 0.538249, 0.939199, 1)
 
 [node name="ExitDoor" parent="." instance=ExtResource("12_eaa0b")]
 position = Vector2(56, 272)
+mode = 2
+scene_to_load = ExtResource("11_eaa0b")
 
+[node name="Collectible20" parent="ExitDoor" instance=ExtResource("5_3l41c")]
+position = Vector2(87, 36)
+
+[node name="LevelEndMenu" parent="." instance=ExtResource("12_fqldq")]
+hub_scene = ExtResource("11_eaa0b")
+
+[node name="TimerHUD" parent="." instance=ExtResource("13_3ay3b")]
+
+[node name="LevelFlowManager" parent="." instance=ExtResource("14_hppjq")]
+player_path = NodePath("../Player")
+timer_hud_path = NodePath("../TimerHUD")
+end_menu_path = NodePath("../LevelEndMenu")
+
+[editable path="Weevil"]
+[editable path="Weevil/HazardBox"]
 [editable path="WanderChaseFly"]
 [editable path="WanderChaseFly/DeAggroRadius/Fly/HazardBox"]
 [editable path="OneWayPlatform"]

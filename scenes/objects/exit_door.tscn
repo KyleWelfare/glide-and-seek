@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://lp8723vkltnl" path="res://scenes/objects/exit_door.gd" id="1_1pkgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwdtn"]
-size = Vector2(32, 64)
+size = Vector2(32, 48)
 
 [node name="ExitDoor" type="Area2D"]
 collision_layer = 32
@@ -11,8 +11,8 @@ script = ExtResource("1_1pkgy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 32.0
-offset_bottom = 64.0
+offset_bottom = 48.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 32)
+position = Vector2(16, 24)
 shape = SubResource("RectangleShape2D_hwdtn")

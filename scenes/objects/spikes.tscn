@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/objects/hazard_box.tscn" id="2_5bfnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlhbl"]
-size = Vector2(14, 11)
+size = Vector2(16, 16)
 
 [node name="Spikes" type="Node2D"]
 

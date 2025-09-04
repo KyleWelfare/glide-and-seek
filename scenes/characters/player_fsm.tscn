@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cd8goosvr0g65"]
+[gd_scene load_steps=35 format=3 uid="uid://cd8goosvr0g65"]
 
 [ext_resource type="Script" uid="uid://pflytok351ps" path="res://scenes/characters/player_fsm.gd" id="1_22ohq"]
 [ext_resource type="Texture2D" uid="uid://v1j3ag6pemrp" path="res://assets/player_spritesheet.png" id="2_bo8q2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b2e6n4ey2wpfj" path="res://scenes/state_machine/wall_climb.gd" id="12_k0at5"]
 [ext_resource type="Script" uid="uid://ct46x3er8vpg1" path="res://scenes/state_machine/wall_slide.gd" id="13_3sl2v"]
 [ext_resource type="Script" uid="uid://bxbp48rb4rctx" path="res://scenes/state_machine/wall_jump.gd" id="13_dfvpo"]
+[ext_resource type="Script" uid="uid://bwrgna4b6xhvn" path="res://scenes/state_machine/wall_coyote.gd" id="16_r74rq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjkkk"]
 size = Vector2(12, 19)
@@ -309,7 +310,6 @@ wait_time = 0.15
 one_shot = true
 
 [node name="GlideStaminaBar" type="ProgressBar" parent="."]
-visible = false
 offset_left = -23.0
 offset_top = -21.0
 offset_right = -17.0
@@ -317,7 +317,6 @@ offset_bottom = -4.0
 theme_override_constants/outline_size = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_pvaw6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0l2v6")
-max_value = 1.0
 step = 0.001
 value = 1.0
 fill_mode = 3
@@ -330,6 +329,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(0.85, 0.85)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
@@ -375,7 +375,7 @@ fall_state = NodePath("../Fall")
 coyote_state = NodePath("../Coyote")
 animation_name = "ground_dash"
 
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "run_state", "duck_state", "jump_state", "wall_idle_state")]
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "run_state", "duck_state", "jump_state", "wall_idle_state", "glide_state")]
 script = ExtResource("5_meydf")
 fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
@@ -383,6 +383,7 @@ run_state = NodePath("../Run")
 duck_state = NodePath("../Duck")
 jump_state = NodePath(".")
 wall_idle_state = NodePath("../WallIdle")
+glide_state = NodePath("../Glide")
 jump_force = 320.0
 animation_name = "jump"
 
@@ -414,41 +415,56 @@ run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 wall_idle_state = NodePath("../WallIdle")
+cruise_angle_deg = 15.0
+speed_decay_time = 2.0
 animation_name = "glide"
 
-[node name="WallIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("wall_climb_state", "wall_slide_state", "fall_state", "wall_jump_state")]
+[node name="WallIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("wall_climb_state", "wall_slide_state", "fall_state", "wall_jump_state", "wall_coyote_state")]
 script = ExtResource("11_ybewe")
 wall_climb_state = NodePath("../WallClimb")
 wall_slide_state = NodePath("../WallSlide")
 fall_state = NodePath("../Fall")
 wall_jump_state = NodePath("../WallJump")
+wall_coyote_state = NodePath("../WallCoyote")
 animation_name = "wall_idle"
 
-[node name="WallClimb" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "wall_idle_state", "wall_slide_state", "fall_state", "wall_jump_state")]
+[node name="WallClimb" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "wall_idle_state", "wall_slide_state", "fall_state", "wall_jump_state", "wall_coyote_state")]
 script = ExtResource("12_k0at5")
 idle_state = NodePath("../Idle")
 wall_idle_state = NodePath("../WallIdle")
 wall_slide_state = NodePath("../WallSlide")
 fall_state = NodePath("../Fall")
 wall_jump_state = NodePath("../WallJump")
+wall_coyote_state = NodePath("../WallCoyote")
 animation_name = "wall_climb"
 
-[node name="WallSlide" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "fall_state", "wall_idle_state", "wall_climb_state", "wall_jump_state")]
+[node name="WallSlide" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "fall_state", "wall_idle_state", "wall_climb_state", "wall_jump_state", "wall_coyote_state")]
 script = ExtResource("13_3sl2v")
 idle_state = NodePath("../Idle")
 fall_state = NodePath("../Fall")
 wall_idle_state = NodePath("../WallIdle")
 wall_climb_state = NodePath("../WallClimb")
 wall_jump_state = NodePath("../WallJump")
+wall_coyote_state = NodePath("../WallCoyote")
 animation_name = "wall_slide"
 
-[node name="WallJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "run_state", "jump_state")]
+[node name="WallJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "run_state", "jump_state", "glide_state")]
 script = ExtResource("13_dfvpo")
 fall_state = NodePath("../Fall")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
+glide_state = NodePath("../Glide")
 animation_name = "jump"
+
+[node name="WallCoyote" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "run_state", "wall_idle_state", "wall_jump_state", "glide_state")]
+script = ExtResource("16_r74rq")
+fall_state = NodePath("../Fall")
+idle_state = NodePath("../Idle")
+run_state = NodePath("../Run")
+wall_idle_state = NodePath("../WallIdle")
+wall_jump_state = NodePath("../WallJump")
+glide_state = NodePath("../Glide")
 
 [node name="RayCastsContainer" type="Node2D" parent="."]
 

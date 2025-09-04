@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 [autoload]
 
 Signals="*res://signals.gd"
+LevelRecords="*res://scripts/level_records.gd"
 
 [display]
 

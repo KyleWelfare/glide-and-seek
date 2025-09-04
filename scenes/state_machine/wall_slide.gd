@@ -5,13 +5,22 @@ extends State
 @export var wall_idle_state: State
 @export var wall_climb_state: State
 @export var wall_jump_state: State
+@export var wall_coyote_state: State
 
 @export var max_slide_speed: float = 350
 
+func enter() -> void:
+	super()
+	# Regain mid-air double jump as soon as we are clinging to the wall.
+	parent.can_double_jump = true
+
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_released("cling_dash") or not parent.is_on_wall():
+	if event.is_action_released("cling_dash"):
+#		return fall_state
+		return wall_coyote_state
+	if not parent.is_on_wall():
 		return fall_state
-	if Input.is_action_just_pressed("jump"):
+	if event.is_action_pressed("jump"):
 		return wall_jump_state
 	return null
 
