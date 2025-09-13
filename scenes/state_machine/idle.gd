@@ -8,7 +8,7 @@ extends State
 
 func enter() -> void:
 	super()
-	parent.stop_dash_carry() # clear any stale air carry
+	parent.stop_dash_carry()
 	parent.velocity.x = 0.0
 	parent.can_double_jump = true
 
@@ -31,7 +31,13 @@ func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
 
+	# Consume buffered inputs
+	if parent.dash_buffer_timer > 0.0:
+		parent.dash_buffer_timer = 0.0
+		return ground_dash_state
+
 	if parent.jump_buffer_timer > 0.0:
+		parent.jump_buffer_timer = 0.0
 		return jump_state
 
 	if !parent.is_on_floor():

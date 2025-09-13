@@ -1,4 +1,4 @@
-extends State 
+extends State
 
 @export var idle_state: State
 @export var run_state: State
@@ -7,7 +7,7 @@ extends State
 @export var fall_state: State
 @export var coyote_state: State
 
-@export var dash_speed: float = 350.0
+@export var dash_speed: float = 400.0
 @export var dash_duration: float = 0.25
 
 var dash_time_left: float = 0.0
@@ -34,12 +34,15 @@ func enter() -> void:
 	parent.velocity.x = dash_speed * float(dash_dir_sign)
 
 func process_input(event: InputEvent) -> State:
-	# Normal cancel behaviour (no special case)—on floor we choose post‑dash state.
+	# Jump-cancel on floor transfers dash speed into the jump via air-carry.
+	if Input.is_action_just_pressed("jump") and parent.is_on_floor():
+		parent.start_dash_carry()
+		return jump_state
+
+	# Normal cancel behaviour (no special case)—on floor we choose post-dash state.
 	if Input.is_action_just_released("cling_dash") and parent.is_on_floor():
 		return _choose_post_dash_state()
-	
-	if Input.is_action_just_pressed("jump") and parent.is_on_floor():
-		return jump_state
+
 	return null
 
 func process_physics(delta: float) -> State:
@@ -70,7 +73,7 @@ func process_physics(delta: float) -> State:
 		parent.start_dash_carry()
 		return coyote_state
 
-	# 3) Normal timeout → choose post‑dash state (no early exit)
+	# 3) Normal timeout → choose post-dash state (no early exit)
 	dash_time_left -= delta
 	if dash_time_left <= 0.0:
 		return _choose_post_dash_state()

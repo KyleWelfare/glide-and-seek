@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=4 uid="uid://ccau52c6ngx2k"]
+
+[ext_resource type="PackedScene" uid="uid://b13kooijltq37" path="res://scenes/tilesets/grid_background.tscn" id="1_8a04m"]
+[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://graybox_2d/Tileset/TileSet_16px.tres" id="1_qpwj6"]
+[ext_resource type="PackedScene" uid="uid://d3q4s5i1uyrwv" path="res://scenes/tilesets/hazard_tiles.tscn" id="2_ibugp"]
+[ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="3_8qukl"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/objects/hazard_box.tscn" id="3_rcbwt"]
+[ext_resource type="PackedScene" uid="uid://cy2v23n5euw35" path="res://scenes/ui/timer_hud.tscn" id="4_3p04p"]
+[ext_resource type="PackedScene" uid="uid://b4wmjwvtxw458" path="res://scenes/objects/exit_door.tscn" id="4_s4jac"]
+[ext_resource type="PackedScene" uid="uid://ckbub55fbvfib" path="res://scenes/objects/collectible.tscn" id="5_b24if"]
+[ext_resource type="PackedScene" uid="uid://bkasene7ago0o" path="res://scenes/ui/level_end_menu.tscn" id="5_qsp8v"]
+[ext_resource type="PackedScene" uid="uid://b7r0ehirj8auu" path="res://scenes/managers/level_flow_manager.tscn" id="6_nt80m"]
+[ext_resource type="PackedScene" uid="uid://bbsqp4j468j2t" path="res://scenes/menus/level_select.tscn" id="10_b24if"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4jac"]
+size = Vector2(30, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b24if"]
+size = Vector2(1008, 384)
+
+[node name="LevelRoot" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="GridBackground" parent="World" instance=ExtResource("1_8a04m")]
+offset_left = -4880.0
+offset_top = -2785.0
+offset_right = 5213.0
+offset_bottom = 2695.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World"]
+tile_map_data = PackedByteArray("AAADAAcABQALAAsAAAD7/wcABQALAAsAAAD7////BQALAAsAAAD7//f/BQALAAsAAAADAPf/BQALAAsAAAADAPn/BQALAAMAAAALAAcABQALAAsAAAATAAcABQALAAsAAAADAP3/BQADAAYAAAATAP//BQALAAsAAAALAP//BQAGAAsAAAAHAP//BQABAAsAAAATAPf/BQALAAYAAAALAPf/BQAGAAYAAAAHAPf/BQABAAYAAAD7/+//BQALAAsAAAADAO//BQALAAsAAAALAO//BQALAAsAAAAbAAcABQALAAsAAAAbAP//BQALAAsAAAAbAPf/BQALAAYAAAAbAA8ABQALAAsAAAATAA8ABQALAAsAAAALAA8ABQALAAsAAAADAA8ABQALAAsAAAD7/w8ABQALAAsAAADz/wcABQALAAsAAADz/w8ABQALAAsAAADz////BQALAAsAAADz//f/BQALAAsAAADz/+//BQALAAsAAADz/+f/BQALAAsAAAD7/+f/BQALAAsAAAADAOf/BQALAAsAAAALAOf/BQALAAsAAAATAOf/BQALAAsAAADz/9//BQALAAsAAAD7/9//BQALAAsAAAADAN//BQALAAsAAAALAN//BQALAAsAAAATAN//BQALAAsAAAAbAN//BQALAAsAAAAjAN//BQALAAsAAAAUAOf/BQAQACMAAAAVAOb/BQAQACMAAAAWAOX/BQAQACMAAAAXAOT/BQAQACMAAAAYAOP/BQAQACMAAAAZAOL/BQAQACMAAAAaAOH/BQAQACMAAAAbAOD/BQAQACMAAAAXAOP/BQAGAAYAAAAZAOH/BQADAAMAAAAVAOX/BQADAAMAAAAUAOb/BQABAAEAAAAWAOT/BQABAAEAAAAYAOL/BQABAAEAAAAaAOD/BQABAAEAAABHAAwABQALAAsAAAATAPH/BQAGAAMAAAASAPL/BQADAAEAAAAQAPL/BQAOACMAAAATAPL/BQAQACMAAAAPAPD/BQAKACIAAAAEAPD/BQAQACMAAAAcAPX/BQABAAEAAABHAAQABQAOACEAAABiAAkABQALAAsAAABHABQABQALAAsAAABiABEABQALAAsAAABiABkABQALAAsAAABHABwABQALAAsAAAAbABcABQALAAsAAAATABcABQALAAsAAAALABcABQALAAsAAAADABcABQALAAsAAAD7/xcABQALAAsAAADz/xcABQALAAsAAABqABkABQALAAsAAABqABEABQALAAsAAABqAAkABQALAAsAAABqAAEABQALAAsAAABqAPn/BQALAAsAAABqAPH/BQALAAsAAAATAOn/BQALAAMAAAATAOr/BQALAAEAAAATAO//BQALAAYAAAAPAOv/BQAGAAEAAAARAOv/BQADAAEAAAATAOv/BQADAAEAAABaAAIABQABAAEAAAAGAP//BQArAAwAAAAGAPX/BQABAAEAAAAGAPb/BQAOACMAAAAGAPT/BQAOACEAAAD8////BQAQACEAAAD8//r/BQAlAAkAAAABAPr/BQAnAAkAAABaAAMABQAOACMAAAAbAB8ABQALAAsAAAATAB8ABQALAAsAAAALAB8ABQALAAsAAABHACQABQALAAsAAABiACEABQALAAsAAABqACEABQALAAsAAABqAOn/BQALAAsAAAArAN//BQALAAsAAAAzAN//BQALAAsAAAA7AN//BQALAAsAAABDAN//BQALAAsAAABLAN//BQALAAsAAABTAN//BQALAAsAAABbAN//BQALAAsAAABjAN//BQALAAsAAABrAN//BQALAAsAAAByACEABQALAAsAAAByABkABQALAAsAAAByABEABQALAAsAAAByAAkABQALAAsAAAByAAEABQALAAsAAAByAPn/BQALAAsAAAByAPH/BQALAAsAAAByAOn/BQALAAsAAABqAOH/BQALAAMAAAByAOH/BQALAAMAAABvAN//BQAGAAYAAABvANv/BQAGAAYAAABxAN//BQADAAYAAABxANv/BQADAAYAAAByAN//BQABAAYAAAByANv/BQABAAYAAABiAOD/BQAOACMAAAA=")
+tile_set = ExtResource("1_qpwj6")
+
+[node name="TerrainContainer" type="Node2D" parent="World"]
+
+[node name="HazardsContainer" type="Node2D" parent="World"]
+
+[node name="HazardBox2" parent="World/HazardsContainer" instance=ExtResource("3_rcbwt")]
+position = Vector2(155, -202)
+
+[node name="CollisionShape2D" parent="World/HazardsContainer/HazardBox2" index="0"]
+position = Vector2(5, 4.5)
+shape = SubResource("RectangleShape2D_s4jac")
+
+[node name="HazardBox" parent="World/HazardsContainer" instance=ExtResource("3_rcbwt")]
+position = Vector2(777, 244)
+
+[node name="CollisionShape2D" parent="World/HazardsContainer/HazardBox" index="0"]
+position = Vector2(175, 158)
+shape = SubResource("RectangleShape2D_b24if")
+debug_color = Color(0.993295, 0, 0.239713, 0.42)
+
+[node name="EnemiesContainer" type="Node2D" parent="World"]
+
+[node name="DoorsContainer" type="Node2D" parent="World"]
+
+[node name="ExitDoor" parent="World/DoorsContainer" instance=ExtResource("4_s4jac")]
+position = Vector2(1504, -16)
+mode = 2
+
+[node name="Collectible" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-1454, 8)
+
+[node name="Collectible2" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-1429, -67)
+
+[node name="Collectible3" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-1343, -210)
+
+[node name="Collectible4" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-1232, -184)
+
+[node name="Collectible5" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-1169, -248)
+
+[node name="Collectible6" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-853, -44)
+
+[node name="Collectible10" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-996, -145)
+
+[node name="Collectible11" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-552, 46)
+
+[node name="Collectible8" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-289, 16)
+
+[node name="Collectible9" parent="World/DoorsContainer/ExitDoor" instance=ExtResource("5_b24if")]
+position = Vector2(-234, 24)
+
+[node name="HazardTiles" parent="World" instance=ExtResource("2_ibugp")]
+tile_map_data = PackedByteArray("AAAJAPP/AAABAAEAAAAKAPP/AAABAAEAAAA=")
+
+[node name="Player" parent="." instance=ExtResource("3_8qukl")]
+position = Vector2(-32, 0)
+
+[node name="UIContainer" type="CanvasLayer" parent="."]
+
+[node name="TimerHUD" parent="UIContainer" instance=ExtResource("4_3p04p")]
+
+[node name="ReadyLabel" parent="UIContainer/TimerHUD" index="1"]
+visible = false
+
+[node name="GoLabel" parent="UIContainer/TimerHUD" index="2"]
+visible = false
+
+[node name="LevelEndMenu" parent="UIContainer" instance=ExtResource("5_qsp8v")]
+visible = false
+hub_scene = ExtResource("10_b24if")
+
+[node name="LevelFlowManager" parent="." instance=ExtResource("6_nt80m")]
+player_path = NodePath("../Player")
+timer_hud_path = NodePath("../UIContainer/TimerHUD")
+end_menu_path = NodePath("../UIContainer/LevelEndMenu")
+level_id = "level_2"
+
+[editable path="World/HazardsContainer/HazardBox2"]
+[editable path="World/HazardsContainer/HazardBox"]
+[editable path="UIContainer/TimerHUD"]

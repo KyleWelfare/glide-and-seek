@@ -1,14 +1,5 @@
-ColorRect
-CollisionShape2D
-Area2D
-StaticBody2D
-RayCast2D
 Node2D
-Timer
-PathFollow2D
-Path2D
-TileMap
-Sprite2D
-Node
+GridContainer
 Label
-CharacterBody2D
+VBoxContainer
+MarginContainer

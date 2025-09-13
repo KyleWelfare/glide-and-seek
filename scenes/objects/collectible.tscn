@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0rb4ycah0hwc" path="res://scenes/particles/sparks_particles.tscn" id="3_6r4vd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hs0aq"]
+radius = 14.0
 
 [sub_resource type="Animation" id="Animation_j3a54"]
 length = 0.001

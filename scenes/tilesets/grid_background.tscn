@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b13kooijltq37"]
+
+[ext_resource type="Texture2D" uid="uid://2i5nofi5pd6t" path="res://graybox_2d/Assets/Grid/Grid_16px.png" id="1_u6q3m"]
+
+[node name="GridBackground" type="TextureRect"]
+texture_filter = 1
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4868.0
+offset_top = -2779.0
+offset_right = 5225.0
+offset_bottom = 2701.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_u6q3m")
+stretch_mode = 1

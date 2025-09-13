@@ -11,7 +11,7 @@ size = Vector2(22, 16)
 
 [node name="Weevil" type="Area2D"]
 collision_layer = 2
-collision_mask = 23
+collision_mask = 20
 script = ExtResource("1_fmxjc")
 
 [node name="WeevilCollision" type="CollisionShape2D" parent="."]
@@ -36,6 +36,7 @@ position = Vector2(12, 1)
 target_position = Vector2(0, 9)
 
 [node name="HazardBox" parent="." instance=ExtResource("2_kris8")]
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="HazardBox" index="0"]
 shape = SubResource("RectangleShape2D_4g4ar")

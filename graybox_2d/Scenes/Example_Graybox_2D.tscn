@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://biagdhq82hpe0"]
+[gd_scene load_steps=5 format=4 uid="uid://biagdhq82hpe0"]
 
-[ext_resource type="Texture2D" uid="uid://2i5nofi5pd6t" path="res://Assets/Grid/Grid_16px.png" id="1_ce6s1"]
-[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://Tileset/TileSet_16px.tres" id="2_xjnff"]
-[ext_resource type="TileSet" uid="uid://dvli763nixt7d" path="res://Tileset/TileSet_8px.tres" id="3_x4p2q"]
+[ext_resource type="Texture2D" uid="uid://2i5nofi5pd6t" path="res://graybox_2d/Assets/Grid/Grid_16px.png" id="1_ce6s1"]
+[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://graybox_2d/Tileset/TileSet_16px.tres" id="2_xjnff"]
+[ext_resource type="TileSet" uid="uid://dvli763nixt7d" path="res://graybox_2d/Tileset/TileSet_8px.tres" id="3_x4p2q"]
+[ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="4_860ci"]
 
 [node name="Node" type="Node"]
 
@@ -12,9 +13,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_ce6s1")
 stretch_mode = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
 
 [node name="TileMaps" type="Node2D" parent="."]
 
@@ -42,3 +40,6 @@ tile_set = ExtResource("3_x4p2q")
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAUAB0AAQAoACoAAAAVAB0AAQAoACoAAAAWAB0AAQAoACoAAAAXAB0AAQAoACoAAAAYAB0AAQAoACoAAAAcABsAAQAoACoAAAAdABsAAQAoACoAAAAeABsAAQAoACoAAAAfABsAAQAoACoAAAAgABsAAQAoACoAAAAlABgAAQAoACoAAAAmABgAAQAoACoAAAAnABgAAQAoACoAAAAoABgAAQAoACoAAAApABwAAQAoACoAAAAqABwAAQAoACoAAAArABwAAQAoACoAAAAsAB8AAQAoACoAAAAtAB8AAQAoACoAAAAuAAkAAQAaACoAAAAuAB8AAQAoACoAAAAvAAkAAQAaACoAAAAvAB8AAQAoACoAAAAwAAkAAQAaACoAAAAwABMAAQAoACoAAAAwABQAAQAoACoAAAAwAB8AAQAoACoAAAAxAAkAAQAaACoAAAAxAB8AAQAoACoAAAAyAAkAAQAaACoAAAAyAB8AAQAoACoAAAAzAB8AAQAoACoAAAA0AB8AAQAoACoAAAA1AB8AAQAoACoAAAA=")
 tile_set = ExtResource("3_x4p2q")
+
+[node name="Player" parent="." instance=ExtResource("4_860ci")]
+position = Vector2(631, 233)

@@ -1,6 +1,5 @@
-res://scenes/objects
-C:/Godot
-res://scenes/state_machine
-res://scenes/characters
-res://
-res://scenes/managers
+res://scenes/components
+res://scripts
+res://resources
+res://scenes/menus
+res://scenes/levels

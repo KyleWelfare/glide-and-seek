@@ -5,13 +5,22 @@ extends State
 @export var wall_slide_state: State
 @export var fall_state: State
 @export var wall_jump_state: State
+@export var wall_coyote_state: State
 
 @export var climb_speed: float = 200
 
+func enter() -> void:
+	super()
+	parent.stop_dash_carry() # Clear dash-carry when entering wall contact
+	parent.velocity = Vector2(0, 0)
+	# Regain mid-air double jump as soon as we are clinging to the wall.
+	parent.can_double_jump = true
+
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_released("cling_dash"):
-		return fall_state
-	if Input.is_action_just_pressed("jump"):
+	if event.is_action_released("cling_dash"):
+#		return fall_state
+		return wall_coyote_state
+	if event.is_action_pressed("jump"):
 		return wall_jump_state
 	return null
 
