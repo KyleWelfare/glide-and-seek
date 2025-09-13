@@ -16,7 +16,7 @@
 size = Vector2(30, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b24if"]
-size = Vector2(1008, 384)
+size = Vector2(1008, 336)
 
 [node name="LevelRoot" type="Node2D"]
 
@@ -47,7 +47,7 @@ shape = SubResource("RectangleShape2D_s4jac")
 position = Vector2(777, 244)
 
 [node name="CollisionShape2D" parent="World/HazardsContainer/HazardBox" index="0"]
-position = Vector2(175, 158)
+position = Vector2(175, 182)
 shape = SubResource("RectangleShape2D_b24if")
 debug_color = Color(0.993295, 0, 0.239713, 0.42)
 

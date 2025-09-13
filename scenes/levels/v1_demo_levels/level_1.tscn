@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bbsqp4j468j2t" path="res://scenes/menus/level_select.tscn" id="11_wie57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wie57"]
-size = Vector2(416, 272)
+size = Vector2(416, 244)
 
 [node name="LevelRoot" type="Node2D"]
 
@@ -38,7 +38,7 @@ tile_set = ExtResource("2_oc4kc")
 position = Vector2(261, 62)
 
 [node name="CollisionShape2D" parent="World/HazardsContainer/HazardBox" index="0"]
-position = Vector2(11, 185)
+position = Vector2(11, 199)
 shape = SubResource("RectangleShape2D_wie57")
 debug_color = Color(1, 0, 0.133333, 0.419608)
 
