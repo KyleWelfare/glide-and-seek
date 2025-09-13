@@ -18,6 +18,9 @@ extends CharacterBody2D
 # --- Stamina UI ---
 @onready var glide_stamina_bar: ProgressBar = $GlideStaminaBar
 
+# Input buffers
+@export var dash_buffer_duration: float = 0.15
+var dash_buffer_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var can_double_jump: bool = true
 
@@ -67,10 +70,16 @@ func _ready() -> void:
 		glide_stamina_bar.min_value = 0.0
 		glide_stamina_bar.max_value = max_stamina
 		glide_stamina_bar.value = current_stamina
+		# Hidden when full at start
+		glide_stamina_bar.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 	
+	# Global arming: buffer dash if pressed while airborne (covers Jump/Fall/Glide/Wall/Coyote)
+	if event.is_action_pressed("cling_dash") and !is_on_floor():
+		dash_buffer_timer = dash_buffer_duration
+
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 
@@ -81,19 +90,29 @@ func _physics_process(delta: float) -> void:
 
 	# Ground edge: refill + clear lockout when landing
 	var on_floor_now: bool = is_on_floor()
-	if on_floor_now and not _was_on_floor:
+	if on_floor_now and !_was_on_floor:
 		current_stamina = max_stamina
 		glide_lockout = false
 		_update_stamina_ui()
 	_was_on_floor = on_floor_now
 
-func _process(delta: float) -> void:
-	state_machine.process_frame(delta)
-
-	if jump_buffer_timer > 0.0:
-		jump_buffer_timer -= delta
+	# Dash carry timing should be physics-stepped for consistency
 	if dash_carry_active:
 		dash_carry_elapsed += delta
+
+	# Input buffer countdowns (physics for determinism)
+	if jump_buffer_timer > 0.0:
+		jump_buffer_timer -= delta
+		if jump_buffer_timer < 0.0:
+			jump_buffer_timer = 0.0
+
+	if dash_buffer_timer > 0.0:
+		dash_buffer_timer -= delta
+		if dash_buffer_timer < 0.0:
+			dash_buffer_timer = 0.0
+
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
 
 	double_jump_label.text = str(can_double_jump)
 	state_label.text = state_machine.current_state.name
@@ -101,7 +120,7 @@ func _process(delta: float) -> void:
 
 # Public helper for states to check before transitioning into Glide
 func is_glide_available() -> bool:
-	return current_stamina > 0.0 and not glide_lockout
+	return current_stamina > 0.0 and !glide_lockout
 
 # Called by GroundDash when we leave ground mid-dash (or cancel right at a ledge)
 func start_dash_carry() -> void:
@@ -135,7 +154,7 @@ func _handle_drop_through() -> void:
 	if is_on_floor() \
 	and Input.is_action_pressed("move_down") \
 	and Input.is_action_just_pressed("jump") \
-	and not is_dropping_through:
+	and !is_dropping_through:
 		_start_drop_through()
 
 func _start_drop_through() -> void:
@@ -161,4 +180,11 @@ func is_cramped_tunnel() -> bool:
 # ---------------------------
 func _update_stamina_ui() -> void:
 	if glide_stamina_bar:
+		# Clamp first to avoid tiny overshoots/undershoots from math elsewhere.
+		var clamped: float = clamp(current_stamina, 0.0, max_stamina)
+		if clamped != current_stamina:
+			current_stamina = clamped
 		glide_stamina_bar.value = current_stamina
+		# Only show when not full. Small epsilon prevents flicker at 99.9999…%
+		var epsilon: float = 0.001
+		glide_stamina_bar.visible = (current_stamina < max_stamina - epsilon)

@@ -12,14 +12,20 @@ extends CanvasLayer
 @onready var retry_button: Button = $Root/MarginContainer/VBoxContainer/HBoxContainer/RetryButton
 @onready var return_button: Button = $Root/MarginContainer/VBoxContainer/HBoxContainer/ReturnButton
 
+# Track whether the menu is currently open (CanvasLayer lacks is_visible_in_tree()).
+var _is_open: bool = false
+
 func _ready() -> void:
 	# Menu must still work after we pause the tree.
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	# We want to catch controller input while paused.
+	set_process_unhandled_input(true)
 
 	# Default text so you never see empty labels.
 	_set_split_labels(0.0, 0.0)
 
 	hide()
+	_is_open = false
 
 	# Button wiring
 	if is_instance_valid(retry_button):
@@ -31,6 +37,16 @@ func _ready() -> void:
 func open_with_times(current_time_seconds: float, best_time_seconds: float) -> void:
 	_set_split_labels(current_time_seconds, best_time_seconds)
 	show()
+	_is_open = true
+
+# Allow pressing X (action "restart") while this menu is open to reload.
+func _unhandled_input(event: InputEvent) -> void:
+	if not _is_open:
+		return
+	if event.is_action_pressed("restart") and not event.is_echo():
+		get_viewport().set_input_as_handled() # CanvasLayer can't call accept_event()
+		get_tree().paused = false
+		get_tree().reload_current_scene()
 
 # --- Internal: formatting & writing to split labels ---
 

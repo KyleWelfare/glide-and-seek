@@ -9,11 +9,6 @@
 
 [node name="LevelRoot" type="Node2D"]
 
-[node name="LevelFlowManager" parent="." instance=ExtResource("1_pl8n6")]
-player_path = NodePath("../Player")
-timer_hud_path = NodePath("../UIContainer/TimerHUD")
-end_menu_path = NodePath("../UIContainer/LevelEndMenu")
-
 [node name="World" type="Node2D" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World"]
@@ -43,5 +38,10 @@ visible = false
 
 [node name="LevelEndMenu" parent="UIContainer" instance=ExtResource("5_0l3oi")]
 visible = false
+
+[node name="LevelFlowManager" parent="." instance=ExtResource("1_pl8n6")]
+player_path = NodePath("../Player")
+timer_hud_path = NodePath("../UIContainer/TimerHUD")
+end_menu_path = NodePath("../UIContainer/LevelEndMenu")
 
 [editable path="UIContainer/TimerHUD"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbsqp4j468j2t"]
+
+[ext_resource type="Script" uid="uid://euo5n4iq65qi" path="res://scripts/level_select.gd" id="1_xqyeo"]
+[ext_resource type="Resource" uid="uid://7v7aeq80gwyx" path="res://resources/v1_demo_catalog.tres" id="2_pymjq"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xqyeo")
+catalog = ExtResource("2_pymjq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2

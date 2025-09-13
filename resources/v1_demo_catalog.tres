@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="LevelCatalog" load_steps=6 format=3 uid="uid://7v7aeq80gwyx"]
+
+[ext_resource type="Script" uid="uid://bc4tuo8rffl8" path="res://scripts/level_entry.gd" id="1_i2boa"]
+[ext_resource type="Script" uid="uid://dtgeu8h05d1to" path="res://scripts/level_catalog.gd" id="2_kt1ec"]
+
+[sub_resource type="Resource" id="Resource_i2boa"]
+script = ExtResource("1_i2boa")
+id = "level_1"
+title = "Level 1"
+scene_path = "res://scenes/levels/v1_demo_levels/level_1.tscn"
+metadata/_custom_type_script = "uid://bc4tuo8rffl8"
+
+[sub_resource type="Resource" id="Resource_kt1ec"]
+script = ExtResource("1_i2boa")
+id = "level_2"
+title = "Level 2"
+scene_path = "res://scenes/levels/v1_demo_levels/level_2.tscn"
+metadata/_custom_type_script = "uid://bc4tuo8rffl8"
+
+[sub_resource type="Resource" id="Resource_jeaw0"]
+script = ExtResource("1_i2boa")
+id = "level_3"
+title = "Level 3"
+scene_path = "res://scenes/levels/v1_demo_levels/level_3.tscn"
+metadata/_custom_type_script = "uid://bc4tuo8rffl8"
+
+[resource]
+script = ExtResource("2_kt1ec")
+title = "World 1"
+columns = 3
+levels = Array[ExtResource("1_i2boa")]([SubResource("Resource_i2boa"), SubResource("Resource_kt1ec"), SubResource("Resource_jeaw0")])
+metadata/_custom_type_script = "uid://dtgeu8h05d1to"

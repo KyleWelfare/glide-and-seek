@@ -40,9 +40,10 @@ func enter() -> void:
 	# If stamina empty or lockout active, bail next frame (press does nothing)
 	_exit_on_first_frame = (parent.current_stamina <= 0.0) or parent.glide_lockout
 
+	# Capture entry velocity BEFORE clearing any dash carry, so we get a tiny entry nudge.
+	_entry_velocity = parent.velocity
 	parent.stop_dash_carry()
 
-	_entry_velocity = parent.velocity
 	var entry_downspeed: float = max(_entry_velocity.y, 0.0)
 
 	# Compute entry horizontal speed:
@@ -58,7 +59,6 @@ func enter() -> void:
 
 	_elapsed = 0.0
 	_blend_elapsed = 0.0
-
 
 func process_physics(delta: float) -> State:
 	if _exit_on_first_frame:
@@ -103,7 +103,7 @@ func process_physics(delta: float) -> State:
 	# Vertical: approach endpoint gently
 	parent.velocity.y = move_toward(parent.velocity.y, target_vy, vertical_approach_rate * delta)
 
-	# Horizontal: tiny entry blend to avoid a 1-frame hitch
+	# Horizontal: tiny entry blend to avoid a 1-frame hitch (uses pre-carry-cleared entry velocity)
 	var desired_vx: float = target_vx
 	if _blend_elapsed < entry_blend_time and entry_blend_time > 0.0:
 		var s: float = clamp(_blend_elapsed / entry_blend_time, 0.0, 1.0)
@@ -132,7 +132,6 @@ func process_physics(delta: float) -> State:
 			return jump_state
 
 	return null
-
 
 func exit() -> void:
 	pass

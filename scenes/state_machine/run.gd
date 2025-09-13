@@ -9,7 +9,7 @@ extends State
 
 func enter() -> void:
 	super()
-	parent.stop_dash_carry() # clear any stale air carry
+	parent.stop_dash_carry()
 	parent.can_double_jump = true
 
 func process_input(event: InputEvent) -> State:
@@ -24,7 +24,13 @@ func process_input(event: InputEvent) -> State:
 func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 
+	# Consume buffered inputs
+	if parent.dash_buffer_timer > 0.0:
+		parent.dash_buffer_timer = 0.0
+		return ground_dash_state
+
 	if parent.jump_buffer_timer > 0.0:
+		parent.jump_buffer_timer = 0.0
 		return jump_state
 
 	var movement: float = Input.get_axis("move_left", "move_right") * move_speed

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://2j8drp6h16rh"]
+[gd_scene load_steps=18 format=4 uid="uid://2j8drp6h16rh"]
 
 [ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="2_8hejo"]
 [ext_resource type="Texture2D" uid="uid://g66crptuidha" path="res://assets/tileset_treetop.png" id="3_f5af4"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b15uwd8t0h7l6" path="res://scenes/objects/weevil.tscn" id="8_k2vwn"]
 [ext_resource type="PackedScene" uid="uid://btsupkb0c52if" path="res://scenes/objects/patrol_fly.tscn" id="9_5yq2v"]
 [ext_resource type="PackedScene" uid="uid://3asr0ermchgx" path="res://scenes/objects/wander_chase_fly.tscn" id="10_vxxdj"]
-[ext_resource type="PackedScene" uid="uid://dkmlmv26mfxyi" path="res://scenes/levels/level_hub_test.tscn" id="11_eaa0b"]
 [ext_resource type="PackedScene" uid="uid://cugopqshlv2ua" path="res://scenes/objects/one_way_platform.tscn" id="11_jmx14"]
 [ext_resource type="PackedScene" uid="uid://b4wmjwvtxw458" path="res://scenes/objects/exit_door.tscn" id="12_eaa0b"]
 [ext_resource type="PackedScene" uid="uid://bkasene7ago0o" path="res://scenes/ui/level_end_menu.tscn" id="12_fqldq"]
@@ -270,13 +269,11 @@ color = Color(0.781955, 0.538249, 0.939199, 1)
 [node name="ExitDoor" parent="." instance=ExtResource("12_eaa0b")]
 position = Vector2(56, 272)
 mode = 2
-scene_to_load = ExtResource("11_eaa0b")
 
 [node name="Collectible20" parent="ExitDoor" instance=ExtResource("5_3l41c")]
 position = Vector2(87, 36)
 
 [node name="LevelEndMenu" parent="." instance=ExtResource("12_fqldq")]
-hub_scene = ExtResource("11_eaa0b")
 
 [node name="TimerHUD" parent="." instance=ExtResource("13_3ay3b")]
 
@@ -290,3 +287,4 @@ end_menu_path = NodePath("../LevelEndMenu")
 [editable path="WanderChaseFly"]
 [editable path="WanderChaseFly/DeAggroRadius/Fly/HazardBox"]
 [editable path="OneWayPlatform"]
+[editable path="TimerHUD"]

@@ -8,6 +8,7 @@ extends State
 
 func enter() -> void:
 	super()
+	parent.stop_dash_carry() # Clear dash-carry when entering wall contact
 	parent.velocity = Vector2(0, 0)
 	# Regain mid-air double jump as soon as we are clinging to the wall.
 	parent.can_double_jump = true

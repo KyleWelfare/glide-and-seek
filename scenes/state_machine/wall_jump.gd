@@ -5,6 +5,7 @@ extends State
 @export var run_state: State
 @export var jump_state: State
 @export var glide_state: State
+@export var wall_idle_state: State
 
 @export var vertical_jump_force: float = 340.0
 @export var horizontal_jump_force: float = 150.0
@@ -52,5 +53,9 @@ func process_physics(delta: float) -> State:
 		if direction != 0.0:
 			return run_state
 		return idle_state
+
+	# Wall cling (match Jump state's early exit so you can reattach immediately)
+	if parent.is_on_wall() and Input.is_action_pressed("cling_dash"):
+		return wall_idle_state
 
 	return null
