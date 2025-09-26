@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqnfwrbx8nmov"]
+
+[ext_resource type="Texture2D" uid="uid://ddu7nn3erfa1y" path="res://assets/art/sprites/hazards/spikes.png" id="1_fi2iu"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/hazards/hazard_box.tscn" id="2_5bfnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlhbl"]
+size = Vector2(16, 16)
+
+[node name="Spikes" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_fi2iu")
+
+[node name="HazardBox" parent="." instance=ExtResource("2_5bfnf")]
+
+[node name="CollisionShape2D" parent="HazardBox" index="0"]
+position = Vector2(8, 10.5)
+shape = SubResource("RectangleShape2D_qlhbl")
+
+[editable path="HazardBox"]

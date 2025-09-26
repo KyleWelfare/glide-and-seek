@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=4 uid="uid://ccau52c6ngx2k"]
 
 [ext_resource type="PackedScene" uid="uid://b13kooijltq37" path="res://scenes/tilesets/grid_background.tscn" id="1_8a04m"]
-[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://graybox_2d/Tileset/TileSet_16px.tres" id="1_qpwj6"]
+[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://assets/art/tiles/graybox_2d/Tileset/TileSet_16px.tres" id="1_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://d3q4s5i1uyrwv" path="res://scenes/tilesets/hazard_tiles.tscn" id="2_ibugp"]
 [ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="3_8qukl"]
-[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/objects/hazard_box.tscn" id="3_rcbwt"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/hazards/hazard_box.tscn" id="3_rcbwt"]
 [ext_resource type="PackedScene" uid="uid://cy2v23n5euw35" path="res://scenes/ui/timer_hud.tscn" id="4_3p04p"]
 [ext_resource type="PackedScene" uid="uid://b4wmjwvtxw458" path="res://scenes/objects/exit_door.tscn" id="4_s4jac"]
 [ext_resource type="PackedScene" uid="uid://ckbub55fbvfib" path="res://scenes/objects/collectible.tscn" id="5_b24if"]

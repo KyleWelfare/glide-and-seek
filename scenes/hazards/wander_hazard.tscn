@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bybh3bxwbwjyt"]
+
+[ext_resource type="PackedScene" uid="uid://dd4ulj5y7gl8e" path="res://scenes/hazards/hazard_root.tscn" id="1_jbo7g"]
+[ext_resource type="PackedScene" uid="uid://c4tb4u562pr5l" path="res://scenes/hazards/components/wander_component.tscn" id="2_4dj6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbo7g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbo7g"]
+
+[node name="WanderHazard" instance=ExtResource("1_jbo7g")]
+hazard_box_path = NodePath("HazardBox")
+wander_radius_path = NodePath("WanderRadius")
+pause_timer_path = NodePath("PauseTimer")
+wander_speed = 50.0
+chase_speed = 80.0
+
+[node name="CollisionShape2D" parent="HazardBox" index="0"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_jbo7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WanderRadius" index="0"]
+scale = Vector2(10.3494, 10.3494)
+shape = SubResource("CircleShape2D_jbo7g")
+
+[node name="WanderComponent" parent="Components" index="0" instance=ExtResource("2_4dj6m")]
+controller_path = NodePath("../..")
+
+[node name="ColorRect" type="ColorRect" parent="." index="6"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[editable path="HazardBox"]

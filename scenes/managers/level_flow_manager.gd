@@ -36,6 +36,10 @@ func _ready() -> void:
 	# LevelFlowManager must run while paused to drive the countdown.
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+	# --- NEW: listen for hazard hits (centralized death handling)
+	if not Signals.is_connected("hazard_triggered", Callable(self, "_on_hazard_triggered")):
+		Signals.connect("hazard_triggered", Callable(self, "_on_hazard_triggered"))
+
 	_player = _safe_get(player_path)
 	if _player == null:
 		_player = get_tree().get_first_node_in_group(PLAYER_GROUP)
@@ -172,6 +176,14 @@ func _open_end_menu_manual() -> void:
 		_end_menu.show()
 
 
+# --- NEW: Hazard death handling ---
+
+func _on_hazard_triggered(hazard: Node, player: Node) -> void:
+	# Centralized response to any hazard touch.
+	# Later you can add a death animation/fade here before reloading.
+	get_tree().reload_current_scene()
+
+
 # --- Helpers ---
 
 func _safe_get(path: NodePath) -> Node:
@@ -212,11 +224,9 @@ func _force_disable_processing(node_to_freeze: Node) -> void:
 		var character_body: CharacterBody2D = node_to_freeze as CharacterBody2D
 		character_body.velocity = Vector2.ZERO
 
-
 func _force_enable_processing(node_to_enable: Node) -> void:
 	node_to_enable.set_process(true)
 	node_to_enable.set_physics_process(true)
-
 
 func _connect_complete_doors() -> void:
 	var scene_root: Node = get_tree().current_scene

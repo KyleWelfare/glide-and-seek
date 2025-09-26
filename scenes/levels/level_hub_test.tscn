@@ -1,15 +1,15 @@
 [gd_scene load_steps=17 format=4 uid="uid://dkmlmv26mfxyi"]
 
 [ext_resource type="PackedScene" uid="uid://b13kooijltq37" path="res://scenes/tilesets/grid_background.tscn" id="1_d2lpi"]
-[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://graybox_2d/Tileset/TileSet_16px.tres" id="1_sb418"]
+[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://assets/art/tiles/graybox_2d/Tileset/TileSet_16px.tres" id="1_sb418"]
 [ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="2_t5sqh"]
 [ext_resource type="PackedScene" uid="uid://b4wmjwvtxw458" path="res://scenes/objects/exit_door.tscn" id="4_yksfn"]
 [ext_resource type="PackedScene" uid="uid://ckbub55fbvfib" path="res://scenes/objects/collectible.tscn" id="5_pg5cn"]
-[ext_resource type="PackedScene" uid="uid://cqnfwrbx8nmov" path="res://scenes/objects/spikes.tscn" id="6_28xcb"]
+[ext_resource type="PackedScene" uid="uid://cqnfwrbx8nmov" path="res://scenes/hazards/spikes.tscn" id="6_28xcb"]
 [ext_resource type="PackedScene" uid="uid://2j8drp6h16rh" path="res://scenes/levels/test_level.tscn" id="6_d2lpi"]
 [ext_resource type="PackedScene" uid="uid://cugopqshlv2ua" path="res://scenes/objects/one_way_platform.tscn" id="7_nf44a"]
-[ext_resource type="PackedScene" uid="uid://b15uwd8t0h7l6" path="res://scenes/objects/weevil.tscn" id="8_dqgfp"]
-[ext_resource type="PackedScene" uid="uid://btsupkb0c52if" path="res://scenes/objects/patrol_fly.tscn" id="9_d2lpi"]
+[ext_resource type="PackedScene" uid="uid://b15uwd8t0h7l6" path="res://scenes/hazards/patrol_ground.tscn" id="8_dqgfp"]
+[ext_resource type="PackedScene" uid="uid://btsupkb0c52if" path="res://scenes/hazards/patrol_air.tscn" id="9_d2lpi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqgfp"]
 size = Vector2(48, 9)

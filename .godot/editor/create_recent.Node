@@ -1,4 +1,14 @@
+AnimatedSprite2D
+Sprite2D
 Node2D
+AnimationPlayer
+RayCast2D
+ShapeCast2D
+Camera2D
+CollisionShape2D
+Area2D
+ColorRect
+Timer
 GridContainer
 Label
 VBoxContainer

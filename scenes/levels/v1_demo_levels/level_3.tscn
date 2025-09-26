@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=4 uid="uid://b5w2xf8q3ysi8"]
+[gd_scene load_steps=24 format=4 uid="uid://b5w2xf8q3ysi8"]
 
 [ext_resource type="PackedScene" uid="uid://b13kooijltq37" path="res://scenes/tilesets/grid_background.tscn" id="1_b6mj2"]
-[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://graybox_2d/Tileset/TileSet_16px.tres" id="2_4foob"]
+[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://assets/art/tiles/graybox_2d/Tileset/TileSet_16px.tres" id="2_4foob"]
 [ext_resource type="PackedScene" uid="uid://cugopqshlv2ua" path="res://scenes/objects/one_way_platform.tscn" id="3_dbpur"]
-[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/objects/hazard_box.tscn" id="4_urs8y"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/hazards/hazard_box.tscn" id="4_urs8y"]
 [ext_resource type="PackedScene" uid="uid://b4wmjwvtxw458" path="res://scenes/objects/exit_door.tscn" id="5_2wwba"]
+[ext_resource type="PackedScene" uid="uid://b15uwd8t0h7l6" path="res://scenes/hazards/patrol_ground.tscn" id="5_urs8y"]
 [ext_resource type="PackedScene" uid="uid://ckbub55fbvfib" path="res://scenes/objects/collectible.tscn" id="6_0mb5o"]
+[ext_resource type="PackedScene" uid="uid://btsupkb0c52if" path="res://scenes/hazards/patrol_air.tscn" id="6_urs8y"]
 [ext_resource type="PackedScene" uid="uid://d3q4s5i1uyrwv" path="res://scenes/tilesets/hazard_tiles.tscn" id="7_403vb"]
 [ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="8_um1ap"]
 [ext_resource type="PackedScene" uid="uid://cy2v23n5euw35" path="res://scenes/ui/timer_hud.tscn" id="9_wuu6u"]
@@ -34,6 +36,15 @@ size = Vector2(304, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vf45w"]
 size = Vector2(8, 30)
 
+[sub_resource type="Curve2D" id="Curve2D_2wwba"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 198, -17, 0, 0, 0, 0, 2, 0)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbpur"]
+size = Vector2(1147, 872)
+
 [node name="LevelRoot" type="Node2D"]
 
 [node name="World" type="Node2D" parent="."]
@@ -45,7 +56,7 @@ offset_right = 1187.0
 offset_bottom = 516.0
 scale = Vector2(0.809777, 0.809777)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="World"]
+[node name="TileMapLayer" type="TileMapLayer" parent="World" groups=["terrain"]]
 tile_map_data = PackedByteArray("AAADAAcABQALAAsAAAALAAcABQALAAsAAAATAAcABQALAAsAAAD7/wcABQALAAsAAADz/wcABQALAAsAAAAbAAcABQALAAsAAAAPAP//BQALAAMAAAAXAP//BQALAAMAAAAfAP//BQALAAMAAAAfAP3/BQALAAEAAAAjAAcABQALAAsAAAArAAcABQALAAsAAAArAP//BQALAAsAAAArAPf/BQALAAsAAAArAO//BQALAAsAAAArAOf/BQALAAsAAAAfAPf/BQALAAsAAAAfAO//BQALAAsAAAArAN//BQALAAsAAAAXAO//BQALAAsAAAAPAO//BQALAAsAAAAXAPf/BQALAAsAAAAPAPf/BQALAAsAAAAHAO//BQALAAYAAAAHAOv/BQALAAMAAAAHAPf/BQABACcAAAArANf/BQALAAsAAAAjANf/BQALAAsAAAAbANf/BQALAAsAAAATANf/BQALAAsAAAALANf/BQALAAsAAAAjANn/BQALAAMAAAAbANn/BQALAAMAAAATANv/BQALAAYAAAALANv/BQALAAYAAAADANf/BQALAAsAAAABAOf/BQADAAsAAAD//+f/BQADAAsAAAD//+//BQADAAYAAAD9/+//BQABAAYAAAD//+v/BQADAAMAAAD9/+v/BQABAAMAAAD5/+f/BQADAAsAAAD5/9//BQADAAYAAAD3/9//BQAGAAYAAAD9//D/BQAOACMAAAD///T/BQAPACcAAAD8/+D/BQAOACMAAAD9/+H/BQAOACMAAAD9/+D/BQABAAEAAAAUANv/BQABACsAAAAcANr/BQABACsAAAAbANr/BQALAAEAAAAMANz/BQABACsAAAAEAN3/BQABACsAAAALANz/BQALAAEAAAABAN//BQADAAsAAAD//9//BQADAAsAAAADANv/BQADAAYAAAADAN3/BQADAAMAAAADAN7/BQAQACMAAAACAN//BQAQACMAAAACAN7/BQABAAEAAAD9/9//BQADAAsAAADz/9//BQALAAYAAADj/9f/BQALAAsAAADj/9//BQALAAsAAADj/+f/BQALAAsAAADr/9//BQAGAAYAAADj/+//BQALAAsAAADj//f/BQALAAsAAADj////BQALAAsAAADj/wcABQALAAsAAADr/wcABQALAAsAAADn/+f/BQADAAsAAAD0/9n/BQADAAEAAADs/9n/BQADAAEAAAD7/9H/BQALAAMAAADz/9H/BQALAAMAAADr/9H/BQALAAMAAADl/9P/BQADAAMAAADn/9L/BQAQACMAAADm/9P/BQAQACMAAADl/9T/BQAQACMAAADk/9X/BQAQACMAAADk/9T/BQABAAEAAADm/9L/BQABAAEAAAD7/9L/BQABAAEAAAD6/9L/BQAOACMAAAD7/9P/BQAOACMAAADv/+//BQALAAsAAAD3/+//BQALAAsAAAD3/+f/BQALAAsAAADv/+f/BQALAAsAAAD5/+3/BQADAAMAAAD5/+7/BQAQACMAAAD4/+//BQAQACMAAAD4/+7/BQABAAEAAADn/+7/BQABAAEAAADn/+//BQAOACMAAADm/+7/BQAOACMAAADn/+3/BQADAAMAAADn/+v/BQADAAYAAAD///P/BQADAAYAAAAHAPP/BQALAAYAAAAHAPX/BQALAAMAAAAHAPb/BQALAAEAAAARAPj/BQAGAAEAAAASAPj/BQAQACMAAAANAPj/BQAOACMAAADj/8//BQALAAsAAADr/8//BQALAAsAAADz/8//BQALAAsAAAD7/8//BQALAAsAAAADAM//BQALAAsAAAALAM//BQALAAsAAAATAM//BQALAAsAAAAbAM//BQALAAsAAAAjAM//BQALAAsAAAArAM//BQALAAsAAAAzAM//BQALAAsAAAAzANf/BQALAAsAAAAzAN//BQALAAsAAAAzAOf/BQALAAsAAAAzAO//BQALAAsAAAAzAPf/BQALAAsAAAAzAP//BQALAAsAAAAzAAcABQALAAsAAAAzAA8ABQALAAsAAAArAA8ABQALAAsAAAAjAA8ABQALAAsAAAAbAA8ABQALAAsAAAATAA8ABQALAAsAAAALAA8ABQALAAsAAAADAA8ABQALAAsAAAD7/w8ABQALAAsAAADz/w8ABQALAAsAAADr/w8ABQALAAsAAADj/w8ABQALAAsAAADb/w8ABQALAAsAAADb/wcABQALAAsAAADb////BQALAAsAAADb//f/BQALAAsAAADb/+//BQALAAsAAADb/+f/BQALAAsAAADb/9//BQALAAsAAADb/9f/BQALAAsAAADb/8//BQALAAsAAADl//b/BQADAAMAAADm//b/BQABAAMAAAD8/+3/BQAXACkAAAD7/+3/BQAXACkAAAD6/+3/BQAXACkAAAD6//n/BQAXACkAAAD7//n/BQAXACkAAAD5//n/BQAXACkAAAD8//n/BQAXACkAAAAAAOj/BQADAAEAAAD+/+j/BQAOACMAAAABAOj/BQAQACMAAADq////BQADAAYAAADq//v/BQADAAEAAADn////BQAGAAYAAADn//v/BQAGAAMAAADn//n/BQAGAAMAAADl//f/BQADAAEAAADm//f/BQABAAEAAADn//f/BQAQACEAAADo//r/BQAQACEAAADo////BQABAAYAAADo//v/BQABAAEAAADy//z/BQALAAMAAAD2//z/BQAGAAMAAAD2//7/BQADAAMAAAD5/+v/BQADAAYAAAD6/+z/BQABABQAAAD6/9z/BQABAAMAAADn/9//BQADAAMAAADn/93/BQABAAMAAADm/9v/BQABAAEAAADm/93/BQABAAMAAAAjAPr/BQABAAsAAAAjAOz/BQABAAsAAAAjAOT/BQABAAsAAAAjANz/BQABAAMAAAA=")
 tile_set = ExtResource("2_4foob")
 
@@ -117,6 +128,16 @@ position = Vector2(-6, 6)
 shape = SubResource("RectangleShape2D_vf45w")
 
 [node name="EnemiesContainer" type="Node2D" parent="World"]
+
+[node name="PatrolGround" parent="World/EnemiesContainer" instance=ExtResource("5_urs8y")]
+position = Vector2(179, -41)
+
+[node name="PatrolAir" parent="World/EnemiesContainer" instance=ExtResource("6_urs8y")]
+position = Vector2(-31, -84)
+curve = SubResource("Curve2D_2wwba")
+
+[node name="PathFollow2D" parent="World/EnemiesContainer/PatrolAir" index="0"]
+position = Vector2(2, 0)
 
 [node name="DoorsContainer" type="Node2D" parent="World"]
 
@@ -190,6 +211,13 @@ timer_hud_path = NodePath("../UIContainer/TimerHUD")
 end_menu_path = NodePath("../UIContainer/LevelEndMenu")
 level_id = "level_3"
 
+[node name="CameraBounds" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds"]
+position = Vector2(64.5, -372)
+shape = SubResource("RectangleShape2D_dbpur")
+
 [editable path="World/TerrainContainer/OneWayPlatform"]
 [editable path="World/TerrainContainer/OneWayPlatform2"]
 [editable path="World/HazardsContainer/HazardBox"]
@@ -199,4 +227,6 @@ level_id = "level_3"
 [editable path="World/HazardsContainer/HazardBox5"]
 [editable path="World/HazardsContainer/HazardBox6"]
 [editable path="World/HazardsContainer/HazardBox7"]
+[editable path="World/EnemiesContainer/PatrolAir"]
+[editable path="World/EnemiesContainer/PatrolAir/PathFollow2D/HazardBox"]
 [editable path="UIContainer/TimerHUD"]

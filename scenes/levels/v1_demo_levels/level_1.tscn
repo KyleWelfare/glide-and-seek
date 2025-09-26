@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=4 uid="uid://ckxoe4v3ywrsx"]
+[gd_scene load_steps=15 format=4 uid="uid://ckxoe4v3ywrsx"]
 
 [ext_resource type="PackedScene" uid="uid://b13kooijltq37" path="res://scenes/tilesets/grid_background.tscn" id="1_mgw4y"]
 [ext_resource type="PackedScene" uid="uid://b7r0ehirj8auu" path="res://scenes/managers/level_flow_manager.tscn" id="1_sk5k4"]
-[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://graybox_2d/Tileset/TileSet_16px.tres" id="2_oc4kc"]
+[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://assets/art/tiles/graybox_2d/Tileset/TileSet_16px.tres" id="2_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://b4wmjwvtxw458" path="res://scenes/objects/exit_door.tscn" id="3_8atit"]
-[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/objects/hazard_box.tscn" id="3_j663j"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/hazards/hazard_box.tscn" id="3_j663j"]
 [ext_resource type="PackedScene" uid="uid://d3q4s5i1uyrwv" path="res://scenes/tilesets/hazard_tiles.tscn" id="3_s8va5"]
 [ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="4_dga24"]
 [ext_resource type="PackedScene" uid="uid://ckbub55fbvfib" path="res://scenes/objects/collectible.tscn" id="4_j663j"]
 [ext_resource type="PackedScene" uid="uid://cy2v23n5euw35" path="res://scenes/ui/timer_hud.tscn" id="5_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://bkasene7ago0o" path="res://scenes/ui/level_end_menu.tscn" id="6_excbq"]
-[ext_resource type="PackedScene" uid="uid://b15uwd8t0h7l6" path="res://scenes/objects/weevil.tscn" id="6_wie57"]
+[ext_resource type="PackedScene" uid="uid://pgm6exmuqabb" path="res://scenes/hazards/chase_hazard.tscn" id="6_w75bf"]
+[ext_resource type="PackedScene" uid="uid://b15uwd8t0h7l6" path="res://scenes/hazards/patrol_ground.tscn" id="6_wie57"]
 [ext_resource type="PackedScene" uid="uid://bbsqp4j468j2t" path="res://scenes/menus/level_select.tscn" id="11_wie57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wie57"]
@@ -44,6 +45,12 @@ debug_color = Color(1, 0, 0.133333, 0.419608)
 
 [node name="EnemiesContainer" type="Node2D" parent="World"]
 
+[node name="PatrolGround" parent="World/EnemiesContainer" instance=ExtResource("6_wie57")]
+position = Vector2(443, -280)
+
+[node name="ChaseHazard" parent="World/EnemiesContainer" instance=ExtResource("6_w75bf")]
+position = Vector2(242, -113)
+
 [node name="DoorsContainer" type="Node2D" parent="World"]
 
 [node name="ExitDoor" parent="World/DoorsContainer" instance=ExtResource("3_8atit")]
@@ -75,9 +82,6 @@ position = Vector2(222, -260)
 position = Vector2(16, -94)
 
 [node name="HazardTiles" parent="World" instance=ExtResource("3_s8va5")]
-
-[node name="Weevil" parent="World" instance=ExtResource("6_wie57")]
-position = Vector2(470, -280)
 
 [node name="Player" parent="." instance=ExtResource("4_dga24")]
 

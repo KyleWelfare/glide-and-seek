@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b13kooijltq37"]
 
-[ext_resource type="Texture2D" uid="uid://2i5nofi5pd6t" path="res://graybox_2d/Assets/Grid/Grid_16px.png" id="1_u6q3m"]
+[ext_resource type="Texture2D" uid="uid://2i5nofi5pd6t" path="res://assets/art/tiles/graybox_2d/Assets/Grid/Grid_16px.png" id="1_u6q3m"]
 
 [node name="GridBackground" type="TextureRect"]
 texture_filter = 1

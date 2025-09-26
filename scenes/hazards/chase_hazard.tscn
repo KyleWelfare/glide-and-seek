@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://pgm6exmuqabb"]
+
+[ext_resource type="PackedScene" uid="uid://dd4ulj5y7gl8e" path="res://scenes/hazards/hazard_root.tscn" id="1_wim6b"]
+[ext_resource type="PackedScene" uid="uid://c4tb4u562pr5l" path="res://scenes/hazards/components/wander_component.tscn" id="2_o2pch"]
+[ext_resource type="PackedScene" uid="uid://dk74tejyr7h81" path="res://scenes/hazards/components/chase_component.tscn" id="3_o2pch"]
+[ext_resource type="PackedScene" uid="uid://c3bnlp4ccinbe" path="res://scenes/hazards/components/aggro_component.tscn" id="4_ymeam"]
+[ext_resource type="Texture2D" uid="uid://c8dkctdmea48p" path="res://assets/art/sprites/hazards/bee_sprite.png" id="5_fgij8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbo7g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbo7g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymeam"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgij8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alkj5"]
+atlas = ExtResource("5_fgij8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og027"]
+atlas = ExtResource("5_fgij8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugf5q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alkj5")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og027")
+}],
+"loop": true,
+"name": &"wander",
+"speed": 5.0
+}]
+
+[node name="ChaseHazard" instance=ExtResource("1_wim6b")]
+hazard_box_path = NodePath("HazardBox")
+wander_radius_path = NodePath("WanderRadius")
+aggro_radius_path = NodePath("AggroRadius")
+deaggro_radius_path = NodePath("DeAggroRadius")
+pause_timer_path = NodePath("PauseTimer")
+sprite_path = NodePath("AnimatedSprite2D")
+wander_speed = 50.0
+chase_speed = 80.0
+
+[node name="CollisionShape2D" parent="HazardBox" index="0"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_jbo7g")
+
+[node name="WanderRadius" parent="." index="1"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WanderRadius" index="0"]
+scale = Vector2(12.102, 12.102)
+shape = SubResource("CircleShape2D_jbo7g")
+
+[node name="AggroRadius" parent="." index="2"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRadius" index="0"]
+scale = Vector2(15.0673, 15.0673)
+shape = SubResource("CircleShape2D_ymeam")
+debug_color = Color(0.9991, 0, 0.123611, 0.42)
+
+[node name="DeAggroRadius" parent="." index="3"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeAggroRadius" index="0"]
+scale = Vector2(23.8423, 23.8423)
+shape = SubResource("CircleShape2D_fgij8")
+debug_color = Color(0, 0.644663, 0.276369, 0.42)
+
+[node name="WanderComponent" parent="Components" index="0" instance=ExtResource("2_o2pch")]
+controller_path = NodePath("../..")
+
+[node name="ChaseComponent" parent="Components" index="1" instance=ExtResource("3_o2pch")]
+controller_path = NodePath("../..")
+
+[node name="AggroComponent" parent="Components" index="2" instance=ExtResource("4_ymeam")]
+controller_path = NodePath("../..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6"]
+sprite_frames = SubResource("SpriteFrames_ugf5q")
+animation = &"chase"
+
+[editable path="HazardBox"]

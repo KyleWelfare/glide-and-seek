@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3bnlp4ccinbe"]
+
+[ext_resource type="Script" uid="uid://ve6x2iecq3wo" path="res://scenes/hazards/components/aggro_component.gd" id="1_mmn3m"]
+
+[node name="AggroComponent" type="Node2D"]
+script = ExtResource("1_mmn3m")

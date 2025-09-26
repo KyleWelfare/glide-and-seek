@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4tb4u562pr5l"]
+
+[ext_resource type="Script" uid="uid://c8qxtvjchgdmh" path="res://scenes/hazards/components/wander_component.gd" id="1_xbpy5"]
+
+[node name="WanderComponent" type="Node2D"]
+script = ExtResource("1_xbpy5")
+min_travel_distance = 48.0

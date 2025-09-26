@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ckbub55fbvfib"]
 
-[ext_resource type="Texture2D" uid="uid://b1ydsbjwm2dmm" path="res://assets/collectible_flower_pink.png" id="1_dme32"]
+[ext_resource type="Texture2D" uid="uid://b1ydsbjwm2dmm" path="res://assets/art/sprites/objects/collectible_flower_pink.png" id="1_dme32"]
 [ext_resource type="Script" uid="uid://dryachlfg2un5" path="res://scenes/objects/collectible.gd" id="1_k76on"]
 [ext_resource type="PackedScene" uid="uid://c0rb4ycah0hwc" path="res://scenes/particles/sparks_particles.tscn" id="3_6r4vd"]
 

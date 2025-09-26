@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd4ulj5y7gl8e"]
+
+[ext_resource type="Script" uid="uid://dm144svsdubmr" path="res://scenes/hazards/hazard_controller.gd" id="1_6d5uj"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/hazards/hazard_box.tscn" id="1_ofo25"]
+
+[node name="HazardRoot" type="Node2D"]
+script = ExtResource("1_6d5uj")
+
+[node name="HazardBox" parent="." instance=ExtResource("1_ofo25")]
+
+[node name="WanderRadius" type="Area2D" parent="."]
+
+[node name="AggroRadius" type="Area2D" parent="."]
+
+[node name="DeAggroRadius" type="Area2D" parent="."]
+
+[node name="PauseTimer" type="Timer" parent="."]
+
+[node name="Components" type="Node2D" parent="."]

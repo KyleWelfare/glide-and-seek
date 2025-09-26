@@ -16,8 +16,8 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
-Signals="*res://signals.gd"
-LevelRecords="*res://scripts/level_records.gd"
+Signals="*res://scripts/autoload/signals.gd"
+LevelRecords="*res://scripts/autoload/level_records.gd"
 
 [display]
 
@@ -29,7 +29,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

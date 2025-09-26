@@ -2,39 +2,44 @@ extends State
 
 @export var wall_climb_state: State
 @export var wall_slide_state: State
-@export var fall_state: State
 @export var wall_jump_state: State
 @export var wall_coyote_state: State
 
+const INPUT_MOVE_UP: String = "move_up"
+const INPUT_MOVE_DOWN: String = "move_down"
+const INPUT_JUMP: String = "jump"
+const INPUT_CLING_DASH: String = "cling_dash"
+
 func enter() -> void:
 	super()
-	parent.stop_dash_carry() # Clear dash-carry when entering wall contact
-	parent.velocity = Vector2(0, 0)
-	# Regain mid-air double jump as soon as we are clinging to the wall.
+	parent.stop_dash_carry()
+	parent.velocity = Vector2.ZERO
+	# Regain mid-air double jump when clinging to the wall.
 	parent.can_double_jump = true
 
+	# Face the wall based on the ray's collision normal (if available).
+	# normal.x > 0 → wall on left → face left; normal.x < 0 → wall on right → face right.
+	if parent.wall_ray_cast and parent.wall_ray_cast.is_colliding():
+		var n: Vector2 = parent.wall_ray_cast.get_collision_normal()
+		parent.set_facing(n.x < 0.0)
+
 func process_input(event: InputEvent) -> State:
-	var climb_direction := Input.get_axis("move_up", "move_down")
-	if climb_direction < 0:
+	var climb_direction: float = Input.get_axis(INPUT_MOVE_UP, INPUT_MOVE_DOWN)
+	if climb_direction < 0.0:
 		return wall_climb_state
-	elif climb_direction > 0:
+	elif climb_direction > 0.0:
 		return wall_slide_state
 
-	if event.is_action_pressed("jump"):
+	if event.is_action_pressed(INPUT_JUMP):
 		return wall_jump_state
 
-	# Releasing cling enters WallCoyote (grace window) instead of immediate fall.
-	if event.is_action_released("cling_dash"):
+	# Releasing cling enters WallCoyote (grace window).
+	if event.is_action_released(INPUT_CLING_DASH):
 		return wall_coyote_state
 
 	return null
 
 func process_physics(delta: float) -> State:
-	# Keep slight push into wall to maintain contact
-	if parent.player_sprite.flip_h == false:
-		parent.velocity.x = 10
-	else:
-		parent.velocity.x = -10
-
+	# No push-into-wall needed with raycast-gated entry.
 	parent.move_and_slide()
 	return null

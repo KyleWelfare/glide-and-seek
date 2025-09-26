@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://btsupkb0c52if"]
+
+[ext_resource type="Script" uid="uid://dc7scxd13p10r" path="res://scenes/hazards/path_follow_2d.gd" id="1_60d6f"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/hazards/hazard_box.tscn" id="2_3mat8"]
+[ext_resource type="Texture2D" uid="uid://xvalvgcxwbcb" path="res://assets/art/sprites/hazards/botfly_sprite.png" id="3_3mat8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1jow"]
+size = Vector2(11, 16)
+
+[node name="PatrolAir" type="Path2D"]
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, -4)
+rotation = -1.5708
+rotates = false
+script = ExtResource("1_60d6f")
+
+[node name="HazardBox" parent="PathFollow2D" instance=ExtResource("2_3mat8")]
+position = Vector2(-8, -8)
+
+[node name="CollisionShape2D" parent="PathFollow2D/HazardBox" index="0"]
+position = Vector2(6.5, 8.99999)
+shape = SubResource("RectangleShape2D_g1jow")
+debug_color = Color(1, 0, 0.12549, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D"]
+rotation = 1.5708
+texture = ExtResource("3_3mat8")
+
+[editable path="PathFollow2D/HazardBox"]

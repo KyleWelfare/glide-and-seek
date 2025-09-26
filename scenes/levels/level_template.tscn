@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cs8qe0s4r4tec"]
+[gd_scene load_steps=8 format=3 uid="uid://cs8qe0s4r4tec"]
 
 [ext_resource type="PackedScene" uid="uid://b7r0ehirj8auu" path="res://scenes/managers/level_flow_manager.tscn" id="1_pl8n6"]
-[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://graybox_2d/Tileset/TileSet_16px.tres" id="2_2o8te"]
+[ext_resource type="TileSet" uid="uid://cyke4okorrvbe" path="res://assets/art/tiles/graybox_2d/Tileset/TileSet_16px.tres" id="2_2o8te"]
 [ext_resource type="PackedScene" uid="uid://d3q4s5i1uyrwv" path="res://scenes/tilesets/hazard_tiles.tscn" id="3_2o8te"]
 [ext_resource type="PackedScene" uid="uid://cd8goosvr0g65" path="res://scenes/characters/player_fsm.tscn" id="3_63ytt"]
 [ext_resource type="PackedScene" uid="uid://cy2v23n5euw35" path="res://scenes/ui/timer_hud.tscn" id="4_8t8rg"]
 [ext_resource type="PackedScene" uid="uid://bkasene7ago0o" path="res://scenes/ui/level_end_menu.tscn" id="5_0l3oi"]
+[ext_resource type="PackedScene" uid="uid://djjv1e3tuhdpw" path="res://scenes/characters/player_camera.tscn" id="7_ulyey"]
 
 [node name="LevelRoot" type="Node2D"]
 
@@ -43,5 +44,7 @@ visible = false
 player_path = NodePath("../Player")
 timer_hud_path = NodePath("../UIContainer/TimerHUD")
 end_menu_path = NodePath("../UIContainer/LevelEndMenu")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("7_ulyey")]
 
 [editable path="UIContainer/TimerHUD"]

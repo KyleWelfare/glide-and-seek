@@ -1,16 +1,26 @@
+## Base class for player states in the FSM. Concrete states override enter/exit/process_* and may use move_speed/gravity.
 class_name State
 extends Node
 
-@export var animation_name: String
-@export var move_speed: float = 200
+@export var animation_name: String = ""	# Keep as String so existing scene data isn't lost
+@export var move_speed: float = 200.0
 
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 
-## Hold a reference to the parent so that it can be controlled by the state
+## The player this state controls. Set by StateMachine.init().
 var parent: Player
 
 func enter() -> void:
-	parent.player_anims.play(animation_name)
+	# Only play an animation if one is specified and the player has an AnimationPlayer.
+	if animation_name == "":
+		return
+	if parent == null:
+		push_error("State.enter(): 'parent' is null. Was StateMachine.init() called?")
+		return
+	if parent.player_anims == null:
+		push_error("State.enter(): parent.player_anims is null.")
+		return
+	parent.player_anims.play(StringName(animation_name))
 
 func exit() -> void:
 	pass

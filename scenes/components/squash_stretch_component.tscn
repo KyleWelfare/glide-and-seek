@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c12m13ljkogvh"]
 
-[ext_resource type="Script" uid="uid://bh5nuvncumipq" path="res://scripts/squash_stretch_component.gd" id="1_3l3de"]
+[ext_resource type="Script" uid="uid://bh5nuvncumipq" path="res://scenes/components/squash_stretch_component.gd" id="1_3l3de"]
 
 [node name="SquashStretchComponent" type="Node2D"]
 script = ExtResource("1_3l3de")

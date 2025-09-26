@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://b15uwd8t0h7l6"]
+
+[ext_resource type="Script" uid="uid://d2uxato2ejtmt" path="res://scenes/hazards/patrol_ground.gd" id="1_fmxjc"]
+[ext_resource type="PackedScene" uid="uid://boreq306q7mmn" path="res://scenes/hazards/hazard_box.tscn" id="2_kris8"]
+[ext_resource type="Texture2D" uid="uid://b0o4hdjxssrri" path="res://assets/art/sprites/hazards/weevil_sprite.png" id="3_4sum3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrsf8"]
+size = Vector2(28, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4g4ar"]
+size = Vector2(26, 15)
+
+[node name="PatrolGround" type="Area2D"]
+collision_layer = 6
+collision_mask = 22
+script = ExtResource("1_fmxjc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_rrsf8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 11.0
+offset_bottom = 8.0
+color = Color(0.892629, 0.190059, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 11.0
+offset_bottom = 3.0
+color = Color(1, 0.45672, 0.344682, 1)
+
+[node name="GroundCheckRaycast" type="RayCast2D" parent="."]
+position = Vector2(14, 1)
+target_position = Vector2(0, 9)
+
+[node name="WallCheckRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
+
+[node name="HazardBox" parent="." instance=ExtResource("2_kris8")]
+position = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="HazardBox" index="0"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_4g4ar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("3_4sum3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="HazardBox"]
